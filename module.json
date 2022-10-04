@@ -9,7 +9,7 @@
       "flags": {}
     }
   ],
-  "url": "https://gitlab.com/dwinther/aime-module",
+  "url": "https://github.com/ZWinther/lotr5e-module",
   "compatibility": {
     "minimum": "10",
     "verified": "10.286"
@@ -48,41 +48,17 @@
       "name": "English",
       "path": "lang/en.json",
       "flags": {}
-    },
-    {
-      "lang": "de",
-      "name": "Deutsch",
-      "path": "lang/de.json",
-      "flags": {}
-    },
-    {
-      "lang": "es",
-      "name": "Español",
-      "path": "lang/es.json",
-      "flags": {}
-    },
-    {
-      "lang": "it",
-      "name": "Italiano",
-      "path": "lang/it.json",
-      "flags": {}
-    },
-    {
-      "lang": "fr",
-      "name": "français",
-      "path": "lang/fr.json",
-      "flags": {}
     }
   ],
   "media": [
     {
       "type": "cover",
-      "url": "https://gitlab.com/dwinther/aime-module/-/raw/master/lotr5e-cover.jpg",
-      "caption": "<Adventures in Middle-Earth>",
+      "url": "https://raw.githubusercontent.com/ZWinther/lotr5e-module/master/lotr5e-cover.jpg",
+      "caption": "<The Lord of the Rings Roleplaying 5E>",
       "loop": false,
       "flags": {}
     }
   ],
-  "manifest": "https://gitlab.com/dwinther/aime-module/-/raw/master/module.json",
-  "download": "https://gitlab.com/dwinther/aime-module/-/archive/0.4.1/aime-module-0.4.1.zip"
+  "manifest": "https://raw.githubusercontent.com/ZWinther/lotr5e-module/releases/latest/download/module.json",
+  "download": "https://github.com/ZWinther/lotr5e-module/releases/0.1/lotr5e-module-0.1.zip"
 }
