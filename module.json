@@ -1,0 +1,88 @@
+{
+  "id": "lotr5e",
+  "title": "Lord of the Rings Roleplaying",
+  "description": "Lord of the Rings Roleplaying for the DND5E System.",
+  "version": "0.1",
+  "authors": [
+    {
+      "name": "Winther",
+      "flags": {}
+    }
+  ],
+  "url": "https://gitlab.com/dwinther/aime-module",
+  "compatibility": {
+    "minimum": "10",
+    "verified": "10.286"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
+        "compatibility": {
+          "minimum": "2.0.3"
+        }
+      }
+    ],
+    "requires": [
+      {
+        "id": "lib-wrapper",
+        "type": "module",
+        "manifest": "https://github.com/ruipin/fvtt-lib-wrapper/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "1.12.10.0"
+        }
+      }
+    ]
+  },
+  "esmodules": [
+    "lotr5e.js"
+  ],
+  "styles": [
+    "styles/lotr5e.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json",
+      "flags": {}
+    },
+    {
+      "lang": "de",
+      "name": "Deutsch",
+      "path": "lang/de.json",
+      "flags": {}
+    },
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json",
+      "flags": {}
+    },
+    {
+      "lang": "it",
+      "name": "Italiano",
+      "path": "lang/it.json",
+      "flags": {}
+    },
+    {
+      "lang": "fr",
+      "name": "français",
+      "path": "lang/fr.json",
+      "flags": {}
+    }
+  ],
+  "media": [
+    {
+      "type": "cover",
+      "url": "https://gitlab.com/dwinther/aime-module/-/raw/master/lotr5e-cover.jpg",
+      "caption": "<Adventures in Middle-Earth>",
+      "loop": false,
+      "flags": {}
+    }
+  ],
+  "manifest": "https://gitlab.com/dwinther/aime-module/-/raw/master/module.json",
+  "download": "https://gitlab.com/dwinther/aime-module/-/archive/0.4.1/aime-module-0.4.1.zip"
+}
