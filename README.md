@@ -1,8 +1,8 @@
 # The Lord of the Rings Roleplaying 5E
 The Lord of the Rings Roleplaying 5E is a module for Foundry VTT's DND5E system. It allows players to play DND5E using the rules from Free League's Lord of the Rings system: The Lord of the Rings Roleplaying 5E.
 
-<img src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://gitlab.com/dwinther/lotr5e-module/-/raw/master/module.json">
-<img src="https://img.shields.io/endpoint?url=https://foundryshields.com/system?url=https://gitlab.com/dwinther/lotr5e-module/-/raw/master/module.json">
+<img src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://raw.githubusercontent.com/ZWinther/lotr5e-module/master/module.json">
+<img src="https://img.shields.io/endpoint?url=https://foundryshields.com/system?url=hhttps://raw.githubusercontent.com/ZWinther/lotr5e-module/master/module.json">
 <a href="https://ko-fi.com/dwinther"><img src="https://img.shields.io/badge/Buy%20me%20a%20coffee%3F-875a3b"></a>
 
 
@@ -18,7 +18,7 @@ Languages from LOTR5E also replaces the default 5e languages, as does the curren
 No content (creatures, items, etc.) is included in this module. It aims purely to create a framework for players to use the LOTR5E rules in Foundry VTT.
 
 ## Installation
-Make sure you have the dnd5e system installed, then copy ```https://gitlab.com/dwinther/lotr5e-module/-/raw/master/module.json``` and paste it in the manifest url field in Foundry:
+Make sure you have the dnd5e system installed, then copy ```https://raw.githubusercontent.com/ZWinther/lotr5e-module/master/module.json``` and paste it in the manifest url field in Foundry:
 
 ![install](install.png)
 
@@ -30,7 +30,7 @@ Always backup your world data before enabling :)
 
 ## Compatibility
 
-I do my best to keep the module up-to-date with both the latest Foundry version and the latest updates to the 5e system. Sometimes the updates will break something and depending on my work and daily life, it might take a little while to make a fix. Creating an issue [here](https://gitlab.com/dwinther/lotr5e-module/-/issues) will keep me informed about what I need to fix.
+I do my best to keep the module up-to-date with both the latest Foundry version and the latest updates to the 5e system. Sometimes the updates will break something and depending on my work and daily life, it might take a little while to make a fix. Creating an issue [here](https://github.com/ZWinther/lotr5e-module/issues) will keep me informed about what I need to fix.
 
 ## Acknowledgements
 
