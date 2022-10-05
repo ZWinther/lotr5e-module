@@ -123,8 +123,6 @@ Hooks.on('init', async function () {
 	};
 	// preLocalize("currencies", { keys: ["label", "abbreviation"] });
 
-	CONFIG.debug.hooks = true
-
 	CONFIG.DND5E.skills = {
 	  acr: { label: "DND5E.SkillAcr", ability: "dex" },
 	  ani: { label: "DND5E.SkillAni", ability: "wis" },
