@@ -41,6 +41,7 @@
 .dnd5e.sheet.actor.npc {
   min-width: 720px;
   min-height: 725px;
+  height: 725px !important;
 }
 /* .dnd5e.sheet.actor .sheet-header .summary input, .dnd5e.sheet.actor .sheet-header .summary span {
     font-size: 14px !important;

@@ -113,12 +113,12 @@ Hooks.on('init', async function () {
 	sp: {
 		label: "LOTR.CoinsSP",
 		abbreviation: "LOTR.CoinsAbbrSP",
-		conversion: {into: "gp", each: 20}
+		conversion: {into: "gp", each: 10}
 	},
 	cp: {
 		label: "LOTR.CoinsCC",
 		abbreviation: "LOTR.CoinsAbbrCC",
-		conversion: {into: "sp", each: 12}
+		conversion: {into: "sp", each: 10}
 	}
 	};
 	// preLocalize("currencies", { keys: ["label", "abbreviation"] });
@@ -134,7 +134,8 @@ Hooks.on('init', async function () {
 	  itm: { label: "DND5E.SkillItm", ability: "cha" },
 	  inv: { label: "DND5E.SkillInv", ability: "int" },
 	  lor: { label: "LOTR.SkillLor", ability: "int" },
-	  med: { label: "DND5E.SkillMed", ability: "wis" },
+	  mdc: { label: "LOTR.SkillMed", ability: "int" },
+	  // med: { label: "DND5E.SkillMed", ability: "int" },
 	  nat: { label: "DND5E.SkillNat", ability: "int" },
 	  prc: { label: "DND5E.SkillPrc", ability: "wis" },
 	  prf: { label: "DND5E.SkillPrf", ability: "cha" },
@@ -145,7 +146,7 @@ Hooks.on('init', async function () {
 	  // rel: { label: "DND5E.SkillRel", ability: "int" },
 	  slt: { label: "DND5E.SkillSlt", ability: "dex" },
 	  ste: { label: "DND5E.SkillSte", ability: "dex" },
-	  sur: { label: "DND5E.SkillSur", ability: "wis" },
+	  // sur: { label: "DND5E.SkillSur", ability: "wis" },
 	  tra: { label: "LOTR.SkillTra", ability: "wis" }
 	};
 	// preLocalize("skills", { key: "label", sort: true });
@@ -207,6 +208,10 @@ Hooks.on('init', async function () {
 			ability: "wis"
 		},
 		{
+			skl: "mdc",
+			ability: "int"
+		},
+		{
 			skl: "exp",
 			ability: "wis"
 		},
@@ -264,7 +269,7 @@ Hooks.on('init', async function () {
     	'modules/lotr5e/templates/lotr-shadow-path.hbs'
   	]);
 
-	CONFIG.DND5E.delSkills = ["arc", "rel", "tss", "tst"];
+	CONFIG.DND5E.delSkills = ["arc", "rel", "tss", "sur", "tst"];
 
 	// Remove PP and EP from showing up on character sheet displays since we don't use them in AiME	
 	libWrapper.register("lotr5e", "game.dnd5e.applications.actor.ActorSheet5eCharacter.prototype.getData", async function patchedActorSheet5eCharacter(wrapped, ...args) {
@@ -299,7 +304,7 @@ Hooks.on('init', async function () {
 		const newSkills = CONFIG.DND5E.newSkills;
 		const skillData = this.system.skills;
 		const skillSource = source.skills;
-		const delSkills = ["arc", "rel", "tss", "tst"];
+		const delSkills = ["arc", "rel", "tss", "sur", "tst"];
 
 		
 		if ( this.type != "vehicle" ) {
