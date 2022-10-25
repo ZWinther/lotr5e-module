@@ -129,13 +129,13 @@ Hooks.on('init', async function () {
 	  // arc: { label: "DND5E.SkillArc", ability: "int" },
 	  ath: { label: "DND5E.SkillAth", ability: "str" },
 	  dec: { label: "DND5E.SkillDec", ability: "cha" },
-	  his: { label: "DND5E.SkillHis", ability: "int" },
+	//   his: { label: "DND5E.SkillHis", ability: "int" },
 	  ins: { label: "LOTR.SkillIns", ability: "wis" },
 	  itm: { label: "DND5E.SkillItm", ability: "cha" },
 	  inv: { label: "DND5E.SkillInv", ability: "int" },
 	  lor: { label: "LOTR.SkillLor", ability: "int" },
-	  mdc: { label: "LOTR.SkillMed", ability: "int" },
 	  // med: { label: "DND5E.SkillMed", ability: "int" },
+	  mdc: { label: "LOTR.SkillMed", ability: "int" },
 	  nat: { label: "DND5E.SkillNat", ability: "int" },
 	  prc: { label: "DND5E.SkillPrc", ability: "wis" },
 	  prf: { label: "DND5E.SkillPrf", ability: "cha" },
@@ -228,12 +228,6 @@ Hooks.on('init', async function () {
 			proficient: "0"
 		},
 	];
-
-	CONFIG.DND5E.maxLevel = 10;
-
-	CONFIG.DND5E.CHARACTER_EXP_LEVELS = [
-	0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000
-	];
 	
 	// preLocalize("newScores");
 
@@ -269,7 +263,7 @@ Hooks.on('init', async function () {
     	'modules/lotr5e/templates/lotr-shadow-path.hbs'
   	]);
 
-	CONFIG.DND5E.delSkills = ["arc", "rel", "tss", "sur", "tst"];
+	CONFIG.DND5E.delSkills = ["arc", "rel", "tss", "sur", "med", "tst"];
 
 	// Remove PP and EP from showing up on character sheet displays since we don't use them in AiME	
 	libWrapper.register("lotr5e", "game.dnd5e.applications.actor.ActorSheet5eCharacter.prototype.getData", async function patchedActorSheet5eCharacter(wrapped, ...args) {
@@ -304,7 +298,7 @@ Hooks.on('init', async function () {
 		const newSkills = CONFIG.DND5E.newSkills;
 		const skillData = this.system.skills;
 		const skillSource = source.skills;
-		const delSkills = ["arc", "rel", "tss", "sur", "tst"];
+		const delSkills = ["arc", "rel", "tss", "med", "sur", "tst"];
 
 		
 		if ( this.type != "vehicle" ) {
