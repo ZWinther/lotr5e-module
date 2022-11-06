@@ -1,0 +1,6 @@
+<span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-livingStandard" data-placeholder="{{ localize 'LOTR.LivingStandard' }}">{{system.details.livingStandard}}</span>
+<input type="hidden" data-input="{{actor._id}}-livingStandard" name="system.details.livingStandard" value="{{system.details.livingStandard}}" placeholder="{{ localize 'LOTR.LivingStandard' }}">
+<span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-disfeat" data-placeholder="{{ localize 'LOTR.Feature' }}">{{system.details.disfeat}}</span>
+<input type="hidden" data-input="{{actor._id}}-disfeat" name="system.details.disfeat" value="{{system.details.disfeat}}" placeholder="{{ localize 'LOTR.Feature' }}">
+<span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-shadowpath" data-placeholder="{{ localize 'LOTR.ShadowPath' }}">{{system.details.shadowpath}}</span>
+<input type="hidden" data-input="{{actor._id}}-shadowpath" name="system.details.shadowpath" value="{{system.details.shadowpath}}" placeholder="{{ localize 'LOTR.ShadowPath' }}">

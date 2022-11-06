@@ -245,12 +245,22 @@ Hooks.on('init', async function () {
 	//   Object.values(DND5E[key]).forEach(o => o.toString = toString);
 	// }
 
+	// Classic Item Controls
+	game.settings.register("lotr5e", "spellbookToggle", {
+		name: `${game.i18n.localize("LOTR.Settings.SpellbookToggle.name")}`,
+		hint: game.i18n.localize("LOTR.Settings.SpellbookToggle.hint"),
+		scope: "user",
+		config: true,
+		default: false,
+		type: Boolean
+	});
+
 	const tidy5eModule = game.modules?.get('tidy5e-sheet')?.active;
 
 	if (tidy5eModule === true) {
     		loadTemplates([
-    		'modules/lotr5e/templates/aime-tidy5e-standard.hbs',
-    		 ]);
+    		'modules/lotr5e/templates/lotr-tidy5e-standard.hbs',
+    		]);
     	}
     // if (rpgUI === true) {
     // 	loadTemplates([
@@ -261,7 +271,7 @@ Hooks.on('init', async function () {
     	'modules/lotr5e/templates/lotr-miserable-box.hbs',
     	'modules/lotr5e/templates/lotr-scores-end.hbs',
     	'modules/lotr5e/templates/lotr-shadow-path.hbs'
-  	]);
+	]);
 
 	CONFIG.DND5E.delSkills = ["arc", "rel", "tss", "sur", "med", "tst"];
 
@@ -330,13 +340,6 @@ Hooks.on('init', async function () {
 
 }, "WRAPPER");
 
-   // libWrapper.register("aime", "CONFIG.Actor.documentClass.prototype._preCreate", function patchedPreCreate(wrapped, ...args) {
-   //      wrapped(...args);
-
- 
-   //  }, "WRAPPER");
-
-
 });
 
 function i18n(key) {
@@ -373,30 +376,12 @@ Hooks.on('renderActorSheet', async function (app, html, data) {
         // summary = SumHtml;
 		$(SumHtml).insertAfter(summary);
 
-        //Remove spellbook
+        //Remove spellbook tab if setting is enabled
+		if (game.settings.get("lotr5e", "spellbookToggle")) {
         $(html).find('*[data-tab="spellbook"]').remove()
+		};
 
         $(html).find(".dnd5e.sheet.actor.character").css("min-height", "823px");
-
-   //      //RPG-Styled UI Compatibility
-   //      if (rpgUI === true) {
-   //      	const ctrlDiv = '<div class="control-group"></div>';
-   //      	const ctrlEndDiv = '</div>';
-   //      	const ctrlLabel = '<label class="control control-checkbox"></label>';
-   //      	const ctrlEndLabel = '</label>';
-   //      	const ctrlIndicator = '<div class="control_indicator ctrlNew"></div>'
-   //      	const resInput = $(html).find(".recharge.checkbox.flexcol input")
-   //      	const misBox = "/modules/aime/templates/aime-miserable-box-rpgui.hbs"
-			// const misHtml = await renderTemplate(misBox, data);
-			// var inspDiv = $(html).find(".flexrow.inspiration");
-			// $(".dnd5e.sheet.actor.character").css("min-height", "823px");
-			// $(html).find(".encumbrance.encumbered").css("background", "#ffffff14");
-			// $(html).find(".encumbrance-bar").css({"background": "#331914","border": "1px solid #372d25"})
-			// $(html).find(".encumbrance-label").css("font-size", "10px")
-			// $(html).find(".ability3").css("border", "2px groove var(--border-color)");
-			// resInput.wrap( ctrlDiv ).wrap( ctrlLabel ).after( ctrlIndicator );
-			// inspDiv[0].outerHTML = misHtml;
-   //      };
     }
     	if (sheet5e === "dnd5e,sheet,actor,npc") {
     		var npcSha = $(html).find('[data-ability="sha"]');
@@ -421,28 +406,30 @@ Hooks.on('renderActorSheet', async function (app, html, data) {
 	    //     	npcPerm.remove();
 	    // }
 
-        // // Tidy5e Sheet Compatibility
+        // Tidy5e Sheet Compatibility
         // if (sheetTidy === "tidy5e") {
-		// 	const livingBox = "/modules/lotr5e/templates/aime-tidy5e-standard.hbs"
-		// 	const livingHtml = await renderTemplate(livingBox, data);
-		// 	const tidyMisBox = "/modules/lotr5e/templates/aime-tidy5e-miserable.hbs"
-		// 	const tidyMisHtml = await renderTemplate(tidyMisBox, data);
-		// 	const tidyGP = "/modules/lotr5e/templates/aime-tidy5e-gp.hbs"
-		// 	const tidyGPRender =  await renderTemplate(tidyGP, data);
-		// 	const tidySP = "/modules/lotr5e/templates/aime-tidy5e-sp.hbs"
-		// 	const tidySPRender =  await renderTemplate(tidySP, data);
-		// 	const tidyCP = "/modules/lotr5e/templates/aime-tidy5e-cp.hbs"
-		// 	const tidyCPRender =  await renderTemplate(tidyCP, data);
-		// 	var tidyAlignment = $(html).find('[data-target*="alignment"]');
-		// 	var tidyAlignmentInput = $(html).find('input[name="data.details.alignment"]')[0];
-		// 	var tidyBackground = $(html).find('[data-target*="background"]');
-		// 	var tidyInspiration = $(html).find('.inspiration');
+			// const livingBox = "/modules/lotr5e/templates/lotr-tidy5e-standard.hbs"
+			// const livingHtml = await renderTemplate(livingBox, data);
+			// const tidyMisBox = "/modules/lotr5e/templates/lotr-tidy5e-miserable.hbs"
+			// const tidyMisHtml = await renderTemplate(tidyMisBox, data);
+			// const tidyGP = "/modules/lotr5e/templates/lotr-tidy5e-gp.hbs"
+			// const tidyGPRender =  await renderTemplate(tidyGP, data);
+			// const tidySP = "/modules/lotr5e/templates/lotr-tidy5e-sp.hbs"
+			// const tidySPRender =  await renderTemplate(tidySP, data);
+			// const tidyCP = "/modules/lotr5e/templates/lotr-tidy5e-cp.hbs"
+			// const tidyCPRender =  await renderTemplate(tidyCP, data);
+			// var tidySizeSelect = $(html).find('.actor-size-select');
+			// var tidyInspiration = $(html).find('.inspiration');
 
-		// 	// Remove alignment and insert standard of living
-		// 	if (sheetTidyType != "vehicle") {
-		// 	tidyAlignment.remove();
-		// 	tidyAlignmentInput.remove();
-		// 	}
+			// let tidySummaryDel = $(html).find( '[data-target*="alignment"], [data-target*="background"], [data-target*="race"], [data-input*="alignment"], [data-input*="background"], [data-input*="race"]' );
+			
+			// tidySummaryDel.remove();
+			// tidySizeSelect.after(livingHtml);
+
+			// Remove alignment and insert standard of living
+			// if (sheetTidyType != "vehicle") {
+			// tidySummary.innerHTML = livingHtml;
+			// }
 		// 	// If NPC or Vehicle remove Shadow and Perm scores
 		// 	if (sheetTidyType != "character") {
 		// 	var npcSha = $(html).find('[data-ability="sha"]');
@@ -450,9 +437,7 @@ Hooks.on('renderActorSheet', async function (app, html, data) {
         // 	npcSha.remove();
         // 	npcPerm.remove();
 		// 	}
-		// 	if (sheetTidyType === "character") {
-		// 	tidyBackground.after(livingHtml);
-
+		// }
 		// 	// Remove mod/save box from new scores
 		// 	var tidySha = $(html).find('[data-ability="sha"]').find('.value-footer');
 		// 	var tidyPerm = $(html).find('[data-ability="perm"]').find('.value-footer');
@@ -479,6 +464,138 @@ Hooks.on('renderActorSheet', async function (app, html, data) {
 		// 	}
         // }
     });
+
+	Hooks.on("renderTidy5eSheet", async (app, html, data) => {
+		const tidyGP = "/modules/lotr5e/templates/lotr-tidy5e-gp.hbs"
+		const tidyGPRender =  await renderTemplate(tidyGP, data);
+		const tidySP = "/modules/lotr5e/templates/lotr-tidy5e-sp.hbs"
+		const tidySPRender =  await renderTemplate(tidySP, data);
+		const tidyCP = "/modules/lotr5e/templates/lotr-tidy5e-cp.hbs"
+		const tidyCPRender =  await renderTemplate(tidyCP, data);
+		const livingBox = "/modules/lotr5e/templates/lotr-tidy5e-standard.hbs"
+		const livingHtml = await renderTemplate(livingBox, data);
+		const tidyMisBox = "/modules/lotr5e/templates/lotr-tidy5e-miserable.hbs"
+		const tidyMisHtml = await renderTemplate(tidyMisBox, data);
+		const tidyAngBox = "/modules/lotr5e/templates/lotr-tidy5e-anguished.hbs"
+		const tidyAngHtml = await renderTemplate(tidyAngBox, data);
+		let tidyBG = $(html).find('[data-input*="background"]');
+		let tidySummaryDel = $(html).find( '[data-target*="alignment"], [data-input*="alignment"]' );
+		let tidyInspiration = $(html).find('.inspiration');
+
+		
+		
+		// Add new fields to character summary
+		tidySummaryDel.remove();
+		tidyBG.after(livingHtml);
+
+		// Remove mod/save box from new scores
+		var tidySha = $(html).find('[data-ability="sha"]').find('.value-footer');
+		var tidyPerm = $(html).find('[data-ability="perm"]').find('.value-footer');
+		var tidyCogPerm = $(html).find('[data-ability="perm"]').find('.config-button');
+		var tidyCogSha = $(html).find('[data-ability="sha"]').find('.config-button');
+		tidySha.remove();
+		tidyPerm.remove();
+		tidyCogSha.remove();
+		tidyCogPerm.remove();
+
+		// Add Miserable & Anguished buttons next to Inspiration button
+		tidyInspiration.after(tidyMisHtml);
+		let tidyMis = $(html).find('.miserable');	
+		tidyMis.after(tidyAngHtml);
+
+		//Remove spellbook tab if setting is enabled
+		if (game.settings.get("lotr5e", "spellbookToggle")) {
+			$(html).find('[data-tab="spellbook"]').remove()	
+		};
+
+		// Change currency abbreviations
+		var tidyGPReplace = $(html).find('.denomination.gp')[0];
+		tidyGPReplace.innerHTML = tidyGPRender;
+		var tidySPReplace = $(html).find('.denomination.sp')[0];
+		tidySPReplace.innerHTML = tidySPRender;
+		var tidyCPReplace = $(html).find('.denomination.cp')[0];
+		tidyCPReplace.innerHTML = tidyCPRender;
+
+		html.find('[contenteditable]').on('paste', function(e) {
+			//strips elements added to the editable tag when pasting
+			let $self = $(this);
+		
+			// set maxlength
+			let maxlength = 40;
+			if($self[0].dataset.maxlength){
+			  maxlength = parseInt($self[0].dataset.maxlength);
+			}
+		
+			setTimeout(function() {
+			  let textString = $self.text();
+			  textString = textString.substring(0,maxlength);
+			  $self.html(textString);
+			}, 0);
+		
+		  }).on('keypress', function(e) {
+			let $self = $(this);
+		
+			// set maxlength
+			let maxlength = 40;
+			if($self[0].dataset.maxlength){
+			  maxlength = parseInt($self[0].dataset.maxlength);
+			}
+		
+			// only accept backspace, arrow keys and delete after maximum characters
+			let keys = [8,37,38,39,40,46];
+		
+			if($(this).text().length === maxlength && keys.indexOf(e.keyCode) < 0) { 
+			  e.preventDefault();
+			}
+		
+			if(e.keyCode===13){
+			  $(this).blur();
+			}
+		  });
+		
+		  html.find('[contenteditable]').blur(async (event) => {
+			let value = event.target.textContent;
+			let target = event.target.dataset.target;
+			html.find('input[type="hidden"][data-input="'+target+'"]').val(value).submit();
+		  });
+	});
+Hooks.on("renderTidy5eNPC", async (app, html, data) => {
+	const tidyNpcCurrency = $(html).find('.inventory-currency');
+
+	// If NPC remove Shadow and Perm scores
+		let npcSha = $(html).find('[data-ability="sha"]');
+		let npcPerm = $(html).find('[data-ability="perm"]');
+		npcSha.remove();
+		npcPerm.remove();
+	
+	// Currency
+	tidyNpcCurrency.remove();
+});
+
+Hooks.on("renderTidy5eVehicle", async (app, html, data) => {
+	const tidyGP = "/modules/lotr5e/templates/lotr-tidy5e-gp.hbs"
+	const tidyGPRender =  await renderTemplate(tidyGP, data);
+	const tidySP = "/modules/lotr5e/templates/lotr-tidy5e-sp.hbs"
+	const tidySPRender =  await renderTemplate(tidySP, data);
+	const tidyCP = "/modules/lotr5e/templates/lotr-tidy5e-cp.hbs"
+	const tidyCPRender =  await renderTemplate(tidyCP, data);
+
+	// Remove Shadow and Perm scores
+	let npcSha = $(html).find('[data-ability="sha"]');
+	let npcPerm = $(html).find('[data-ability="perm"]');
+	npcSha.remove();
+	npcPerm.remove();
+
+	// Change currency abbreviations
+	var tidyGPReplace = $(html).find('.denomination.gp')[0];
+	tidyGPReplace.innerHTML = tidyGPRender;
+	var tidySPReplace = $(html).find('.denomination.sp')[0];
+	tidySPReplace.innerHTML = tidySPRender;
+	var tidyCPReplace = $(html).find('.denomination.cp')[0];
+	tidyCPReplace.innerHTML = tidyCPRender;
+
+});
+	
 Hooks.on('renderItemSheet5e', async function (app, html, data) {
 	const armorPropTemp = "/modules/lotr5e/templates/lotr-armorProp.hbs"
 	const armorPropHtml = await renderTemplate(armorPropTemp, data);
