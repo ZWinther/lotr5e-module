@@ -241,17 +241,26 @@
 .ability-name.box-title.rollable[title="Shadow"] {
   pointer-events: none !important;
 }
-.ability-name.box-title.rollable[title="Permanent"] {
+.ability-name.box-title.rollable[title="Scars"] {
   pointer-events: none !important;
 }
-.aimeTidyInput {
-  width: max-content;
-}
-.aimeTidyInput input {
-  margin:0;
-  padding: 0;
+.lotrTidySummary {
   height: 12px;
-  font-size: 12px;
+  display: flex;
+}
+.lotrTidySummary input {
+  line-height: 12px !important;
+  height: 12px;
+  width: auto !important;
+}
+.disfeat {
+  min-width: 126px !important;
+}
+.living {
+  min-width: 126px !important;
+}
+.disfeat {
+  min-width: 126px !important;
 }
 .tidy5e.sheet.actor .playerName {
   min-width: 20px !important;
@@ -319,6 +328,73 @@
 }
 
 .tidy5e.sheet.actor .miserable input:checked + label i.disable-animation {
+  animation: none;
+}
+
+.tidy5e.sheet.actor .inspirationOnHover .anguished {
+  display: none;
+}
+.tidy5e.sheet.actor .inspirationOnHover:hover .anguished {
+  display: block;
+}
+.tidy5e.sheet.actor .anguished {
+  position: absolute;
+  right: -26px;
+  bottom: 4px;
+  width: 25px;
+  height: 25px;
+  z-index: 5;
+}
+
+.tidy5e.sheet.actor .anguished input {
+  display: none;
+}
+.tidy5e.sheet.actor .anguished label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 5px 0 5px;
+  font-size: 17px;
+  color: var(--icon-font);
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--icon-shadow) inset;
+  border: 1px solid var(--icon-outline);
+  background: var(--icon-background);
+}
+.tidy5e.sheet.actor .roundPortrait .anguished label {
+  border-radius: 50%;
+}
+
+.tidy5e.sheet.actor .anguished label i {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 25px;
+}
+
+.tidy5e.sheet.actor .anguished label:hover {
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 0 5px rgba(118, 228, 255, 0.5);
+}
+
+.tidy5e.sheet.actor .anguished input:checked + label {
+  color: white;
+  text-shadow: 0 0 10px #ffc276;
+  background: #999;
+}
+
+.tidy5e.sheet.actor .anguished input:checked + label i {
+  color: #FFFFFF;
+  animation: glow 5s ease-in-out infinite alternate;
+}
+
+.tidy5e.sheet.actor .anguished input:checked + label i.disable-animation {
   animation: none;
 }
 .tidy5e.sheet.actor .attuned-items-counter {
