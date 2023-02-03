@@ -108,17 +108,18 @@ Hooks.on('init', async function () {
 	CONFIG.DND5E.currencies = {
 	gp: {
 		label: "LOTR.CoinsGP",
-		abbreviation: "LOTR.CoinsAbbrGP"
+		abbreviation: "LOTR.CoinsAbbrGP",
+		conversion: 1
 	},
 	sp: {
 		label: "LOTR.CoinsSP",
 		abbreviation: "LOTR.CoinsAbbrSP",
-		conversion: {into: "gp", each: 10}
+		conversion: 10
 	},
 	cp: {
 		label: "LOTR.CoinsCC",
 		abbreviation: "LOTR.CoinsAbbrCC",
-		conversion: {into: "sp", each: 10}
+		conversion: 100
 	}
 	};
 	// preLocalize("currencies", { keys: ["label", "abbreviation"] });
@@ -245,7 +246,6 @@ Hooks.on('init', async function () {
 	//   Object.values(DND5E[key]).forEach(o => o.toString = toString);
 	// }
 
-	// Classic Item Controls
 	game.settings.register("lotr5e", "spellbookToggle", {
 		name: `${game.i18n.localize("LOTR.Settings.SpellbookToggle.name")}`,
 		hint: game.i18n.localize("LOTR.Settings.SpellbookToggle.hint"),
@@ -347,13 +347,12 @@ function i18n(key) {
 }
 
 Hooks.on('renderActorSheet', async function (app, html, data) {
+	const actor = data.actor;
 	const sheet5e = app.options.classes.join();
-	const sheetTidy = app.options.classes[0];
-	const sheetTidyType = app.options.classes[3];
 
 	if (sheet5e === "dnd5e,sheet,actor,character") {
 		const misBox = "/modules/lotr5e/templates/lotr-miserable-box.hbs"
-		const misHtml = await renderTemplate(misBox, data);
+		const misHtml = await renderTemplate(misBox, actor);
 		var inspDiv = $(html).find(".flexrow.inspiration");
 		inspDiv[0].outerHTML = misHtml;
 
@@ -371,7 +370,7 @@ Hooks.on('renderActorSheet', async function (app, html, data) {
 		alignment.remove();
 
 		const SumBox = "/modules/lotr5e/templates/lotr-summary.hbs"
-        const SumHtml = await renderTemplate(SumBox, data);
+        const SumHtml = await renderTemplate(SumBox, actor);
         var summary = $(html).find('.summary')[0];
         // summary = SumHtml;
 		$(SumHtml).insertAfter(summary);
@@ -466,6 +465,7 @@ Hooks.on('renderActorSheet', async function (app, html, data) {
     });
 
 	Hooks.on("renderTidy5eSheet", async (app, html, data) => {
+		const actorData = data.actor;
 		const tidyGP = "/modules/lotr5e/templates/lotr-tidy5e-gp.hbs"
 		const tidyGPRender =  await renderTemplate(tidyGP, data);
 		const tidySP = "/modules/lotr5e/templates/lotr-tidy5e-sp.hbs"
@@ -475,9 +475,9 @@ Hooks.on('renderActorSheet', async function (app, html, data) {
 		const livingBox = "/modules/lotr5e/templates/lotr-tidy5e-standard.hbs"
 		const livingHtml = await renderTemplate(livingBox, data);
 		const tidyMisBox = "/modules/lotr5e/templates/lotr-tidy5e-miserable.hbs"
-		const tidyMisHtml = await renderTemplate(tidyMisBox, data);
+		const tidyMisHtml = await renderTemplate(tidyMisBox, actorData);
 		const tidyAngBox = "/modules/lotr5e/templates/lotr-tidy5e-anguished.hbs"
-		const tidyAngHtml = await renderTemplate(tidyAngBox, data);
+		const tidyAngHtml = await renderTemplate(tidyAngBox, actorData);
 		let tidyBG = $(html).find('[data-input*="background"]');
 		let tidySummaryDel = $(html).find( '[data-target*="alignment"], [data-input*="alignment"]' );
 		let tidyInspiration = $(html).find('.inspiration');
