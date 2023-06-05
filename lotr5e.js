@@ -154,28 +154,52 @@ Hooks.on('init', async function () {
 	// patchConfig("skills", "label", { since: 2.0, until: 2.2 });
 
 	CONFIG.DND5E.abilities = {
-		str: "DND5E.AbilityStr",
-		dex: "DND5E.AbilityDex",
-		con: "DND5E.AbilityCon",
-		int: "DND5E.AbilityInt",
-		wis: "DND5E.AbilityWis",
-		cha: "DND5E.AbilityCha",
-		sha: "LOTR.AbilitySha",
-		perm: "LOTR.AbilityPerm",
-	};
-	// preLocalize("abilities");
-
-	CONFIG.DND5E.abilityAbbreviations = {
-	  str: "DND5E.AbilityStrAbbr",
-	  dex: "DND5E.AbilityDexAbbr",
-	  con: "DND5E.AbilityConAbbr",
-	  int: "DND5E.AbilityIntAbbr",
-	  wis: "DND5E.AbilityWisAbbr",
-	  cha: "DND5E.AbilityChaAbbr",
-	  sha: "DND5E.AbilityShaAbbr",
-	  perm: "DND5E.AbilityPermAbbr",
-	};
-	// preLocalize("abilityAbbreviations");
+		str: {
+		  label: "DND5E.AbilityStr",
+		  abbreviation: "DND5E.AbilityStrAbbr",
+		  type: "physical"
+		},
+		dex: {
+		  label: "DND5E.AbilityDex",
+		  abbreviation: "DND5E.AbilityDexAbbr",
+		  type: "physical"
+		},
+		con: {
+		  label: "DND5E.AbilityCon",
+		  abbreviation: "DND5E.AbilityConAbbr",
+		  type: "physical"
+		},
+		int: {
+		  label: "DND5E.AbilityInt",
+		  abbreviation: "DND5E.AbilityIntAbbr",
+		  type: "mental",
+		  defaults: { vehicle: 0 }
+		},
+		wis: {
+		  label: "DND5E.AbilityWis",
+		  abbreviation: "DND5E.AbilityWisAbbr",
+		  type: "mental",
+		  defaults: { vehicle: 0 }
+		},
+		cha: {
+		  label: "DND5E.AbilityCha",
+		  abbreviation: "DND5E.AbilityChaAbbr",
+		  type: "mental",
+		  defaults: { vehicle: 0 }
+		},
+		sha: {
+			label: "LOTR.AbilitySha",
+			abbreviation: "DND5E.AbilityShaAbbr",
+			type: "mental",
+			defaults: { vehicle: 0 }
+		},
+		perm: {
+		label: "LOTR.AbilityPerm",
+		abbreviation: "DND5E.AbilityPermAbbr",
+		type: "mental",
+		defaults: { vehicle: 0 }
+		}
+	  };
 
 	CONFIG.DND5E.languages = {
 		common: "LOTR.LanguagesCommon",
