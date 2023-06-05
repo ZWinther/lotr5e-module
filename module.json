@@ -2,7 +2,7 @@
   "id": "lotr5e",
   "title": "Lord of the Rings Roleplaying",
   "description": "Lord of the Rings Roleplaying for the DND5E System.",
-  "version": "0.2.1",
+  "version": "0.3.1",
   "authors": [
     {
       "name": "Winther",
@@ -11,8 +11,8 @@
   ],
   "url": "https://github.com/ZWinther/lotr5e-module",
   "compatibility": {
-    "minimum": "10",
-    "verified": "10.288"
+    "minimum": "11",
+    "verified": "11"
   },
   "relationships": {
     "systems": [
@@ -21,7 +21,7 @@
         "type": "system",
         "manifest": "https://raw.githubusercontent.com/foundryvtt/dnd5e/master/system.json",
         "compatibility": {
-          "minimum": "2.0.3"
+          "minimum": "2.2.1"
         }
       }
     ],
@@ -31,7 +31,7 @@
         "type": "module",
         "manifest": "https://github.com/ruipin/fvtt-lib-wrapper/releases/latest/download/module.json",
         "compatibility": {
-          "minimum": "1.12.10.0"
+          "minimum": "1.12.12.1"
         }
       }
     ]
