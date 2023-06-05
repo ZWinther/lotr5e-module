@@ -1,8 +1,8 @@
 # The Lord of the Rings Roleplaying 5E
 The Lord of the Rings Roleplaying 5E is a module for Foundry VTT's DND5E system. It allows players to play DND5E using the rules from Free League's Lord of the Rings system: The Lord of the Rings Roleplaying 5E.
 
-<img src="https://img.shields.io/endpoint?url=https://foundryshields.com/version?url=https://raw.githubusercontent.com/ZWinther/lotr5e-module/master/module.json">
-<img src="https://img.shields.io/endpoint?url=https://foundryshields.com/system?url=hhttps://raw.githubusercontent.com/ZWinther/lotr5e-module/master/module.json">
+<img src="https://img.shields.io/endpoint?url=https%3A%2F%2Ffoundryshields.com%2Fversion%3Fstyle%3Dfor-the-badge%26url%3Dhttps%3A%2F%2Fgithub.com%2FZWinther%2Flotr5e-module%2Freleases%2Fdownload%2Fv0.3.1%2Fmodule.json">
+<img src="https://img.shields.io/endpoint?url=https%3A%2F%2Ffoundryshields.com%2Fsystem%3FnameType%3Dfoundry%26showVersion%3D1%26style%3Dfor-the-badge%26url%3Dhttps%3A%2F%2Fgithub.com%2FZWinther%2Flotr5e-module%2Freleases%2Fdownload%2Fv0.3.1%2Fmodule.json">
 <a href="https://ko-fi.com/dwinther"><img src="https://img.shields.io/badge/Buy%20me%20a%20coffee%3F-875a3b"></a>
 
 
