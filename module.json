@@ -11,7 +11,7 @@
   ],
   "url": "https://github.com/ZWinther/lotr5e-module",
   "compatibility": {
-    "minimum": "11",
+    "minimum": "10",
     "verified": "11"
   },
   "relationships": {
