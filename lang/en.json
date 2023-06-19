@@ -87,5 +87,6 @@
   "LOTR.Anguished": "Anguished",
   "LOTR.Settings.SpellbookToggle.name": "Disable Spellbook tab",
   "LOTR.Settings.SpellbookToggle.hint": "Disables the spellbook tab on character sheets.",
-  "LOTR.FellowshipPoints": "Fellowship Points"
+  "LOTR.FellowshipPoints": "Fellowship Points",
+  "LOTR.Patron": "Patron"
 }

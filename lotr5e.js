@@ -426,6 +426,11 @@ Hooks.on('renderActorSheet', async function (app, html, data) {
 			const fellowshipBox = "/modules/lotr5e/templates/lotr-fellowship-box.hbs";
 			const fellowshipHtml = await renderTemplate(fellowshipBox, actor);
 			$(fellowshipHtml).insertAfter(groupMove);
+		
+			var summary = $(html).find(".summary")[0];
+			const patronBox = "/modules/lotr5e/templates/lotr-patron-box.hbs";
+			const patronHtml = await renderTemplate(patronBox, actor);
+			$(patronHtml).insertAfter(summary);
 		}
 
         // // MonsterBlock Compatibility
