@@ -24,9 +24,9 @@
 "ITEM.TypeClass": "Vocation",
 "ITEM.TypeCraft": "Arts",
 "ITEM.Virtue": "Vertu",
-"ACTOR.TypeGroup": "Fellowship",
-"TYPES.Actor.group": "Fellowship",
-"TYPES.Actor.groupPl": "Fellowships",
+"ACTOR.TypeGroup": "Communauté",
+"TYPES.Actor.group": "Communauté",
+"TYPES.Actor.groupPl": "Communautés",
 "DND5E.AdvancementItemGrantHint": "Accorde au personnage des objets (tels que de l'équipement, des vertus ou des Arts) lorsqu'il atteint un certain niveau.",
 "DND5E.AdvancementClassRestriction": "Restriction de vocation",
 "DND5E.AdvancementClassRestrictionNone": "Toutes les vocations",
@@ -87,5 +87,5 @@
 "LOTR.Anguished": "Angoissé",
 "LOTR.Settings.SpellbookToggle.name": "Désactiver l'onglet Livre de sorts",
 "LOTR.Settings.SpellbookToggle.hint": "Désactive l'onglet du livre de sorts sur les feuilles de personnage.",
-"LOTR.FellowshipPoints": "Fellowship Points"
+"LOTR.FellowshipPoints": "Point de Communauté"
 }
