@@ -421,6 +421,18 @@ Hooks.on('renderActorSheet', async function (app, html, data) {
         	npcPerm.remove();
         }
 
+		if (sheet5e === "dnd5e,sheet,actor,group") {
+			var groupMove = $(html).find("li.attribute.movement");
+			const fellowshipBox = "/modules/lotr5e/templates/lotr-fellowship-box.hbs";
+			const fellowshipHtml = await renderTemplate(fellowshipBox, actor);
+			$(fellowshipHtml).insertAfter(groupMove);
+		
+			var summary = $(html).find(".summary")[0];
+			const patronBox = "/modules/lotr5e/templates/lotr-patron-box.hbs";
+			const patronHtml = await renderTemplate(patronBox, actor);
+			$(patronHtml).insertAfter(summary);
+		}
+
         // // MonsterBlock Compatibility
         // if (sheetTidy === "monsterblock") {
 	    //     	var npcSha = $(html).find('[data-ability="sha"]');
