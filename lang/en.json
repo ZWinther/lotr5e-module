@@ -27,6 +27,7 @@
 "ACTOR.TypeGroup": "Company",
 "TYPES.Actor.group": "Company",
 "TYPES.Actor.groupPl": "Companies",
+"LOTR.Patron": "Patron",
 "DND5E.AdvancementItemGrantHint": "Grant the character items (such as equipment, virtues, or crafts) when they reach a certain level.",
 "DND5E.AdvancementClassRestriction": "Calling Restriction",
 "DND5E.AdvancementClassRestrictionNone": "All Callings",
