@@ -335,7 +335,7 @@ Hooks.on('init', async function () {
 		const delSkills = ["arc", "rel", "tss", "med", "sur", "tst"];
 
 		
-		if ( this.type != "vehicle" ) {
+		if ( this.type != "vehicle" && this.type != "group" ) {
 		newSkills.forEach(e => {
 			let sklName = e["skl"];
 			let sklAbility = e["ability"];
