@@ -24,9 +24,9 @@
   "ITEM.TypeClass": "Calling",
   "ITEM.TypeCraft": "Craft",
   "ITEM.Virtue": "Virtue",
-  "ACTOR.TypeGroup": "Company",
-  "TYPES.Actor.group": "Company",
-  "TYPES.Actor.groupPl": "Companies",
+  "ACTOR.TypeGroup": "Fellowship",
+  "TYPES.Actor.group": "Fellowship",
+  "TYPES.Actor.groupPl": "Fellowships",
   "DND5E.AdvancementItemGrantHint": "Grant the character items (such as equipment, virtues, or crafts) when they reach a certain level.",
   "DND5E.AdvancementClassRestriction": "Calling Restriction",
   "DND5E.AdvancementClassRestrictionNone": "All Callings",
@@ -43,8 +43,8 @@
   "DND5E.PolymorphKeepClass": "Keep proficiency bonus (leaves calling items in sheet)",
   "DND5E.PolymorphTmpClass": "Temporary Calling",
   "LOTR.WeaponPropertiesFel": "Fell",
-  "LOTR.WeaponPropertiesGri": "Grievous",
-  "LOTR.WeaponPropertiesKee": "Keen",
+	"LOTR.WeaponPropertiesGri": "Grievous",
+	"LOTR.WeaponPropertiesKee": "Keen",
   "LOTR.armorProperties": "Armor Properties",
   "LOTR.ArmorPropertiesClo": "Close-Fitting",
   "LOTR.ArmorPropertiesCun": "Cunning-Make",
@@ -87,6 +87,5 @@
   "LOTR.Anguished": "Anguished",
   "LOTR.Settings.SpellbookToggle.name": "Disable Spellbook tab",
   "LOTR.Settings.SpellbookToggle.hint": "Disables the spellbook tab on character sheets.",
-  "LOTR.FellowshipPoints": "Fellowship Points",
-  "LOTR.Patron": "Patron"
+  "LOTR.FellowshipPoints": "Fellowship Points"
 }
