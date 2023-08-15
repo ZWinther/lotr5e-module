@@ -27,6 +27,7 @@
 "ACTOR.TypeGroup": "Communauté",
 "TYPES.Actor.group": "Communauté",
 "TYPES.Actor.groupPl": "Communautés",
+"LOTR.Patron": "Mécène",
 "DND5E.AdvancementItemGrantHint": "Accorde au personnage des objets (tels que de l'équipement, des vertus ou des Arts) lorsqu'il atteint un certain niveau.",
 "DND5E.AdvancementClassRestriction": "Restriction de vocation",
 "DND5E.AdvancementClassRestrictionNone": "Toutes les vocations",
