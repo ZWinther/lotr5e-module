@@ -1,3 +1,127 @@
+  /* ----------------------------------------- */
+  /*  NEW 5E ACTOR SHEET                       */
+  /* ----------------------------------------- */
+  .dnd5e2.sheet.actor.character {
+    min-width: 962px;
+  }
+  li.lotr5eli {
+    margin-top: 10%;
+  }
+  label.lotr5eSum {
+    flex-direction: column;  
+    align-items: flex-start !important;
+  }
+  label.lotr5eSum span.value {
+    width:100%;
+  }
+  .dnd5e2.sheet.actor.character .ability-scores .ability-score[data-ability="sha"] > a,
+  .dnd5e2.sheet.actor.character .ability-scores .ability-score[data-ability="perm"] > a  {
+    pointer-events: none;
+  }
+  .dnd5e2.sheet.actor.character .ability-scores .ability-score[data-ability="sha"] .sign,
+  .dnd5e2.sheet.actor.character .ability-scores .ability-score[data-ability="perm"] .sign  {
+    display: none;
+  }
+  .dnd5e2.sheet.actor.character .sheet-body .saves li[data-ability="sha"],
+  .dnd5e2.sheet.actor.character .sheet-body .saves li[data-ability="perm"] {
+    display: none;
+  }
+  .unbutton.miserable input {
+    opacity: 0;
+  }
+  .unbutton.anguished input {
+    opacity: 0;
+  }
+  .dnd5e2.sheet.actor.character .sheet-header > .right .miserable {
+    --size: 36px;
+    padding: 0;
+    position: absolute;
+    right: calc(var(--level-size) + var(--padding-right) - var(--size) * 2.66);
+    top: calc(var(--level-size) / 2 - var(--size) / 2);
+    width: var(--size);
+    height: var(--size);
+    background: transparent url("../../../systems/dnd5e/ui/inspiration.webp") no-repeat center / contain;
+    filter: drop-shadow(0 3px 4px var(--dnd5e-shadow-45));
+    display: grid;
+    place-content: center;
+  }
+  .dnd5e2.sheet.actor.character .sheet-header > .right .miserable:hover {
+    box-shadow: none;
+    filter: drop-shadow(0 3px 4px rgba(255, 255, 255, 0.5));
+  }
+  .dnd5e2.sheet.actor.character .miserable[aria-pressed="true"]::after {
+    content: "";
+    width: calc(var(--size) / 4 - 1px);
+    height: calc(var(--size) / 4 - 1px);
+    background: white;
+    transform: rotate(45deg);
+    box-shadow: 0 0 8px 3px orangered;
+    animation: pulsate-miserable 3s infinite ease-in-out;
+    position: absolute;
+    right: calc(var(--size) / 2.66);
+    pointer-events: none;
+  }
+  @keyframes pulsate-miserable {
+    0% {
+      box-shadow: 0 0 8px 3px orangered;
+    }
+    50% {
+      box-shadow: 0 0 8px 4px orangered;
+    }
+    100% {
+      box-shadow: 0 0 8px 3px orangered;
+    }
+  }
+  .dnd5e2.sheet.actor.character .sheet-header > .right .anguished {
+    --size: 36px;
+    padding: 0;
+    position: absolute;
+    right: calc(var(--level-size) + var(--padding-right) - var(--size) * 1.6);
+    top: calc(var(--level-size) / 1 - var(--size) / 1.6);
+    width: var(--size);
+    height: var(--size);
+    background: transparent url("../../../systems/dnd5e/ui/inspiration.webp") no-repeat center / contain;
+    filter: drop-shadow(0 3px 4px var(--dnd5e-shadow-45));
+    display: grid;
+    place-content: center;
+  }
+  .dnd5e2.sheet.actor.character .sheet-header > .right .anguished:hover {
+    box-shadow: none;
+    filter: drop-shadow(0 3px 4px rgba(255, 255, 255, 0.5));
+  }
+  .dnd5e2.sheet.actor.character .anguished[aria-pressed="true"]::after {
+    content: "";
+    width: calc(var(--size) / 4 - 1px);
+    height: calc(var(--size) / 4 - 1px);
+    background: white;
+    transform: rotate(45deg);
+    box-shadow: 0 0 8px 3px black;
+    animation: pulsate-anguished 3s infinite ease-in-out;
+    position: absolute;
+    right: calc(var(--size) / 2.66);
+    pointer-events: none;
+  }
+  @keyframes pulsate-anguished {
+    0% {
+      box-shadow: 0 0 8px 3px black;
+    }
+    50% {
+      box-shadow: 0 0 8px 4px black;
+    }
+    100% {
+      box-shadow: 0 0 8px 3px black;
+    }
+  }
+  @media (prefers-reduced-motion) {
+    .dnd5e2.sheet.actor.character .miserable[aria-pressed="true"]::after {
+      animation: none;
+    }
+  }
+
+
+
+
+ /* ----------------------------------------- */
 .dnd5e.sheet.actor.character .ability-scores {
   flex: 0 0 100px;
   height: auto;
