@@ -29,6 +29,8 @@ Handlebars.registerHelper('if_eq', function(a, b, opts) {
     }
 });
 Hooks.on('init', async function () {
+
+	
 	//DO CONFIG CHANGES
 	CONFIG.DND5E.limitedUsePeriods = {
 		sr: "DND5E.ShortRest",
@@ -122,84 +124,96 @@ Hooks.on('init', async function () {
 		conversion: 100
 	}
 	};
-	// preLocalize("currencies", { keys: ["label", "abbreviation"] });
+	CONFIG.DND5E.toolTypes = {
+		art: "DND5E.ToolArtisans",
+		game: "DND5E.ToolGamingSet",
+		music: "DND5E.ToolMusicalInstrument",
+		pipe: "LOTR.ToolPipe"
+	};
+	CONFIG.DND5E.toolProficiencies = {
+		...CONFIG.DND5E.toolTypes,
+		vehicle: "DND5E.ToolVehicle",
+		pipe: "LOTR.ToolPipeProf"
+	};
 
 	CONFIG.DND5E.skills = {
-	  acr: { label: "DND5E.SkillAcr", ability: "dex" },
-	  ani: { label: "DND5E.SkillAni", ability: "wis" },
-	  // arc: { label: "DND5E.SkillArc", ability: "int" },
-	  ath: { label: "DND5E.SkillAth", ability: "str" },
-	  dec: { label: "DND5E.SkillDec", ability: "cha" },
+		acr: { label: "DND5E.SkillAcr", ability: "dex" },
+		ani: { label: "DND5E.SkillAni", ability: "wis" },
+		// arc: { label: "DND5E.SkillArc", ability: "int" },
+		ath: { label: "DND5E.SkillAth", ability: "str" },
+		dec: { label: "DND5E.SkillDec", ability: "cha" },
 	//   his: { label: "DND5E.SkillHis", ability: "int" },
-	  ins: { label: "LOTR.SkillIns", ability: "wis" },
-	  itm: { label: "DND5E.SkillItm", ability: "cha" },
-	  inv: { label: "DND5E.SkillInv", ability: "int" },
-	  lor: { label: "LOTR.SkillLor", ability: "int" },
-	  // med: { label: "DND5E.SkillMed", ability: "int" },
-	  mdc: { label: "LOTR.SkillMed", ability: "int" },
-	  nat: { label: "DND5E.SkillNat", ability: "int" },
-	  prc: { label: "DND5E.SkillPrc", ability: "wis" },
-	  prf: { label: "DND5E.SkillPrf", ability: "cha" },
-	  per: { label: "DND5E.SkillPer", ability: "cha" },
-	  rid: { label: "LOTR.SkillRid", ability: "int" },
-	  hun: { label: "LOTR.SkillHun", ability: "wis" },
-	  exp: { label: "LOTR.SkillExp", ability: "wis" },
-	  // rel: { label: "DND5E.SkillRel", ability: "int" },
-	  slt: { label: "DND5E.SkillSlt", ability: "dex" },
-	  ste: { label: "DND5E.SkillSte", ability: "dex" },
-	  // sur: { label: "DND5E.SkillSur", ability: "wis" },
-	  tra: { label: "LOTR.SkillTra", ability: "wis" }
+		ins: { label: "LOTR.SkillIns", ability: "wis" },
+		itm: { label: "DND5E.SkillItm", ability: "cha" },
+		inv: { label: "DND5E.SkillInv", ability: "int" },
+		lor: { label: "LOTR.SkillLor", ability: "int" },
+		// med: { label: "DND5E.SkillMed", ability: "int" },
+		mdc: { label: "LOTR.SkillMed", ability: "int" },
+		nat: { label: "DND5E.SkillNat", ability: "int" },
+		prc: { label: "DND5E.SkillPrc", ability: "wis" },
+		prf: { label: "DND5E.SkillPrf", ability: "cha" },
+		per: { label: "DND5E.SkillPer", ability: "cha" },
+		rid: { label: "LOTR.SkillRid", ability: "int" },
+		hun: { label: "LOTR.SkillHun", ability: "wis" },
+		exp: { label: "LOTR.SkillExp", ability: "wis" },
+		// rel: { label: "DND5E.SkillRel", ability: "int" },
+		slt: { label: "DND5E.SkillSlt", ability: "dex" },
+		ste: { label: "DND5E.SkillSte", ability: "dex" },
+		// sur: { label: "DND5E.SkillSur", ability: "wis" },
+		tra: { label: "LOTR.SkillTra", ability: "wis" }
 	};
 	// preLocalize("skills", { key: "label", sort: true });
 	// patchConfig("skills", "label", { since: 2.0, until: 2.2 });
 
 	CONFIG.DND5E.abilities = {
 		str: {
-		  label: "DND5E.AbilityStr",
-		  abbreviation: "DND5E.AbilityStrAbbr",
-		  type: "physical"
+			label: "DND5E.AbilityStr",
+			abbreviation: "DND5E.AbilityStrAbbr",
+			type: "physical"
 		},
 		dex: {
-		  label: "DND5E.AbilityDex",
-		  abbreviation: "DND5E.AbilityDexAbbr",
-		  type: "physical"
+			label: "DND5E.AbilityDex",
+			abbreviation: "DND5E.AbilityDexAbbr",
+			type: "physical"
 		},
 		con: {
-		  label: "DND5E.AbilityCon",
-		  abbreviation: "DND5E.AbilityConAbbr",
-		  type: "physical"
+			label: "DND5E.AbilityCon",
+			abbreviation: "DND5E.AbilityConAbbr",
+			type: "physical"
 		},
 		int: {
-		  label: "DND5E.AbilityInt",
-		  abbreviation: "DND5E.AbilityIntAbbr",
-		  type: "mental",
-		  defaults: { vehicle: 0 }
+			label: "DND5E.AbilityInt",
+			abbreviation: "DND5E.AbilityIntAbbr",
+			type: "mental",
+			defaults: { vehicle: 0 }
 		},
 		wis: {
-		  label: "DND5E.AbilityWis",
-		  abbreviation: "DND5E.AbilityWisAbbr",
-		  type: "mental",
-		  defaults: { vehicle: 0 }
+			label: "DND5E.AbilityWis",
+			abbreviation: "DND5E.AbilityWisAbbr",
+			type: "mental",
+			defaults: { vehicle: 0 }
 		},
 		cha: {
-		  label: "DND5E.AbilityCha",
-		  abbreviation: "DND5E.AbilityChaAbbr",
-		  type: "mental",
-		  defaults: { vehicle: 0 }
+			label: "DND5E.AbilityCha",
+			abbreviation: "DND5E.AbilityChaAbbr",
+			type: "mental",
+			defaults: { vehicle: 0 }
 		},
 		sha: {
 			label: "LOTR.AbilitySha",
 			abbreviation: "DND5E.AbilityShaAbbr",
 			type: "mental",
-			defaults: { vehicle: 0 }
+			defaults: { vehicle: 0 },
+			improvement: false
 		},
 		perm: {
 		label: "LOTR.AbilityPerm",
 		abbreviation: "DND5E.AbilityPermAbbr",
 		type: "mental",
-		defaults: { vehicle: 0 }
+		defaults: { vehicle: 0 },
+		improvement: false
 		}
-	  };
+	};
 
 	CONFIG.DND5E.languages = {
 		common: "LOTR.LanguagesCommon",
@@ -253,22 +267,6 @@ Hooks.on('init', async function () {
 			proficient: "0"
 		},
 	];
-	
-	// preLocalize("newScores");
-
-	// DND5E.allowedActorFlags = ["isPolymorphed", "originalActor"].concat(Object.keys(DND5E.characterFlags));
-
-	// function patchConfig(key, fallbackKey, options) {
-	//   /** @override */
-	//   function toString() {
-	//     const message = `The value of CONFIG.DND5E.${key} has been changed to an object.`
-	//       +` The former value can be acccessed from .${fallbackKey}.`;
-	//     foundry.utils.logCompatibilityWarning(message, options);
-	//     return this[fallbackKey];
-	//   }
-
-	//   Object.values(DND5E[key]).forEach(o => o.toString = toString);
-	// }
 
 	game.settings.register("lotr5e", "spellbookToggle", {
 		name: `${game.i18n.localize("LOTR.Settings.SpellbookToggle.name")}`,
@@ -282,24 +280,19 @@ Hooks.on('init', async function () {
 	const tidy5eModule = game.modules?.get('tidy5e-sheet')?.active;
 
 	if (tidy5eModule === true) {
-    		loadTemplates([
-    		'modules/lotr5e/templates/lotr-tidy5e-standard.hbs',
-    		]);
-    	}
-    // if (rpgUI === true) {
-    // 	loadTemplates([
-    // 		'modules/aime/templates/aime-miserable-box-rpgui.hbs',
-    // 		]);
-    // 	}
+		loadTemplates([
+		'modules/lotr5e/templates/lotr-tidy5e-standard.hbs',
+		]);
+	}
     loadTemplates([
-    	'modules/lotr5e/templates/lotr-miserable-box.hbs',
-    	'modules/lotr5e/templates/lotr-scores-end.hbs',
-    	'modules/lotr5e/templates/lotr-shadow-path.hbs'
+		'modules/lotr5e/templates/lotr-miserable-box.hbs',
+		'modules/lotr5e/templates/lotr-scores-end.hbs',
+		'modules/lotr5e/templates/lotr-shadow-path.hbs'
 	]);
 
 	CONFIG.DND5E.delSkills = ["arc", "rel", "tss", "sur", "med", "tst"];
 
-	// Remove PP and EP from showing up on character sheet displays since we don't use them in AiME	
+	// Remove PP and EP from showing up on character sheet displays since we don't use them in LOTR5E	
 	libWrapper.register("lotr5e", "game.dnd5e.applications.actor.ActorSheet5eCharacter.prototype.getData", async function patchedActorSheet5eCharacter(wrapped, ...args) {
 
 		const data = await wrapped(...args);
@@ -308,9 +301,10 @@ Hooks.on('init', async function () {
 
 		// Return data to the sheet
 		return data
+
 	}, "WRAPPER");
 
-	// Remove PP and EP from showing up on vehicle sheet displays since we don't use them in AiME	
+	// Remove PP and EP from showing up on vehicle sheet displays since we don't use them in LOTR5E	
 	libWrapper.register("lotr5e", "game.dnd5e.applications.actor.ActorSheet5eVehicle.prototype.getData", async function patchedActorSheet5eCharacter(wrapped, ...args) {
 
 		const data = await wrapped(...args);
@@ -334,6 +328,7 @@ Hooks.on('init', async function () {
 		const skillSource = source.skills;
 		const delSkills = ["arc", "rel", "tss", "med", "sur", "tst"];
 
+		
 		
 		if ( this.type != "vehicle" && this.type != "group" ) {
 		newSkills.forEach(e => {
@@ -363,17 +358,40 @@ Hooks.on('init', async function () {
 	};
 
 }, "WRAPPER");
+libWrapper.register("lotr5e", "CONFIG.Actor.documentClass.prototype._prepareAbilities", function patchedPrepareAbilities(wrapped, ...args) {
+    wrapped(...args);
+
+	this.system.abilities.sha.mod = this.system.abilities.sha.value; 
+	this.system.abilities.perm.mod = this.system.abilities.perm.value;
+}, "WRAPPER");
 
 });
 
 function i18n(key) {
 	return game.i18n.localize(key);
 }
-
+function formatText(value) {
+	return new Handlebars.SafeString(value?.replaceAll("\n", "<br>") ?? "");
+}
 Hooks.on('renderActorSheet', async function (app, html, data) {
 	const actor = data.actor;
 	const sheet5e = app.options.classes.join();
+	if (sheet5e === "dnd5e2,sheet,actor,character") {
+		const misBox2 = "/modules/lotr5e/templates/lotr-miserable-box2.hbs"
+		const misHtml2 = await renderTemplate(misBox2, actor);
+		var inspDiv2 = $(html).find("button.inspiration");
+		inspDiv2.after(misHtml2);
 
+		const bio2 = "/modules/lotr5e/templates/lotr-summary2.hbs"
+		const bioHtml2 = await renderTemplate(bio2, data);
+		var bioDiv2 = $(html).find('ul.characteristics');
+		bioDiv2.append(bioHtml2);
+
+		//Remove spellbook tab if setting is enabled
+		if (game.settings.get("lotr5e", "spellbookToggle")) {
+			$(html).find('*[data-tab="spells"]').remove()
+		};
+	}
 	if (sheet5e === "dnd5e,sheet,actor,character") {
 		const misBox = "/modules/lotr5e/templates/lotr-miserable-box.hbs"
 		const misHtml = await renderTemplate(misBox, actor);
@@ -386,6 +404,8 @@ Hooks.on('renderActorSheet', async function (app, html, data) {
         var endScores = $(html).find( ".ability-scores.flexrow li" ).slice(6);
         endScores.remove()
 		abiScores.append(scoreHtml)
+
+		
 
         // const livingBox = "/modules/lotr5e/templates/lotr-shadow-path.hbs"
         // const livingHtml = await renderTemplate(livingBox, data);
@@ -407,18 +427,18 @@ Hooks.on('renderActorSheet', async function (app, html, data) {
         $(html).find(".dnd5e.sheet.actor.character").css("min-height", "823px");
     }
     	if (sheet5e === "dnd5e,sheet,actor,npc") {
-    		var npcSha = $(html).find('[data-ability="sha"]');
-    		var npcPerm = $(html).find('[data-ability="perm"]');
-        	$(html).find('*[name="system.details.alignment"]').parent().remove()
-        	npcSha.remove();
-        	npcPerm.remove();
+			var npcSha = $(html).find('[data-ability="sha"]');
+			var npcPerm = $(html).find('[data-ability="perm"]');
+			$(html).find('*[name="system.details.alignment"]').parent().remove()
+			npcSha.remove();
+			npcPerm.remove();
         }
 
         if (sheet5e === "dnd5e,sheet,actor,vehicle") {
-    		var npcSha = $(html).find('[data-ability="sha"]');
-    		var npcPerm = $(html).find('[data-ability="perm"]');
-        	npcSha.remove();
-        	npcPerm.remove();
+			var npcSha = $(html).find('[data-ability="sha"]');
+			var npcPerm = $(html).find('[data-ability="perm"]');
+			npcSha.remove();
+			npcPerm.remove();
         }
 	// Add fellowship box to the sheet
 	if (sheet5e === "dnd5e,sheet,actor,group") {
@@ -432,72 +452,6 @@ Hooks.on('renderActorSheet', async function (app, html, data) {
 		const patronHtml = await renderTemplate(patronBox, actor);
 		$(patronHtml).insertAfter(summary);
 	}
-
-        // // MonsterBlock Compatibility
-        // if (sheetTidy === "monsterblock") {
-	    //     	var npcSha = $(html).find('[data-ability="sha"]');
-	    // 		var npcPerm = $(html).find('[data-ability="perm"]');
-	    //     	npcSha.remove();
-	    //     	npcPerm.remove();
-	    // }
-
-        // Tidy5e Sheet Compatibility
-        // if (sheetTidy === "tidy5e") {
-			// const livingBox = "/modules/lotr5e/templates/lotr-tidy5e-standard.hbs"
-			// const livingHtml = await renderTemplate(livingBox, data);
-			// const tidyMisBox = "/modules/lotr5e/templates/lotr-tidy5e-miserable.hbs"
-			// const tidyMisHtml = await renderTemplate(tidyMisBox, data);
-			// const tidyGP = "/modules/lotr5e/templates/lotr-tidy5e-gp.hbs"
-			// const tidyGPRender =  await renderTemplate(tidyGP, data);
-			// const tidySP = "/modules/lotr5e/templates/lotr-tidy5e-sp.hbs"
-			// const tidySPRender =  await renderTemplate(tidySP, data);
-			// const tidyCP = "/modules/lotr5e/templates/lotr-tidy5e-cp.hbs"
-			// const tidyCPRender =  await renderTemplate(tidyCP, data);
-			// var tidySizeSelect = $(html).find('.actor-size-select');
-			// var tidyInspiration = $(html).find('.inspiration');
-
-			// let tidySummaryDel = $(html).find( '[data-target*="alignment"], [data-target*="background"], [data-target*="race"], [data-input*="alignment"], [data-input*="background"], [data-input*="race"]' );
-			
-			// tidySummaryDel.remove();
-			// tidySizeSelect.after(livingHtml);
-
-			// Remove alignment and insert standard of living
-			// if (sheetTidyType != "vehicle") {
-			// tidySummary.innerHTML = livingHtml;
-			// }
-		// 	// If NPC or Vehicle remove Shadow and Perm scores
-		// 	if (sheetTidyType != "character") {
-		// 	var npcSha = $(html).find('[data-ability="sha"]');
-    	// 	var npcPerm = $(html).find('[data-ability="perm"]');
-        // 	npcSha.remove();
-        // 	npcPerm.remove();
-		// 	}
-		// }
-		// 	// Remove mod/save box from new scores
-		// 	var tidySha = $(html).find('[data-ability="sha"]').find('.value-footer');
-		// 	var tidyPerm = $(html).find('[data-ability="perm"]').find('.value-footer');
-		// 	var tidyCogPerm = $(html).find('[data-ability="perm"]').find('.config-button');
-		// 	var tidyCogSha = $(html).find('[data-ability="sha"]').find('.config-button');
-		// 	tidySha.remove();
-		// 	tidyPerm.remove();
-		// 	tidyCogSha.remove();
-		// 	tidyCogPerm.remove();
-
-		// 	// Add Miserable button next to Inspiration button
-		// 	tidyInspiration.after(tidyMisHtml);
-
-		// 	// Remove spellbook tab
-		// 	$(html).find('[data-tab="spellbook"]').remove()	
-
-		// 	// Change currency abbreviations
-		// 	var tidyGPReplace = $(html).find('.denomination.gp')[0];
-		// 	tidyGPReplace.innerHTML = tidyGPRender;
-		// 	var tidySPReplace = $(html).find('.denomination.sp')[0];
-		// 	tidySPReplace.innerHTML = tidySPRender;
-		// 	var tidyCPReplace = $(html).find('.denomination.cp')[0];
-		// 	tidyCPReplace.innerHTML = tidyCPRender;
-		// 	}
-        // }
     });
 
 	Hooks.on("renderTidy5eSheet", async (app, html, data) => {
