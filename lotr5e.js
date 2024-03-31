@@ -358,11 +358,11 @@ Hooks.on('init', async function () {
 	};
 
 }, "WRAPPER");
-libWrapper.register("lotr5e", "CONFIG.Actor.documentClass.prototype._prepareAbilities", function patchedPrepareAbilities(wrapped, ...args) {
+libWrapper.register("lotr5e", "CONFIG.Actor.dataModels.character.prototype.prepareDerivedData", function patchedPrepareAbilities(wrapped, ...args) {
     wrapped(...args);
 
-	this.system.abilities.sha.mod = this.system.abilities.sha.value; 
-	this.system.abilities.perm.mod = this.system.abilities.perm.value;
+	this.abilities.sha.mod = this.abilities.sha.value; 
+	this.abilities.perm.mod = this.abilities.perm.value;
 }, "WRAPPER");
 
 });
