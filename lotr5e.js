@@ -30,17 +30,46 @@ Handlebars.registerHelper('if_eq', function(a, b, opts) {
 });
 Hooks.on('init', async function () {
 
-	
 	//DO CONFIG CHANGES
 	CONFIG.DND5E.limitedUsePeriods = {
-		sr: "DND5E.ShortRest",
-		lr: "DND5E.LongRest",
-		day: "DND5E.Day",
-		charges: "DND5E.Charges",
-		jrny: "LOTR.Journey",
-		adv: "LOTR.Adventure"
+		sr: {
+			label: "DND5E.UsesPeriods.Sr",
+			abbreviation: "DND5E.UsesPeriods.SrAbbreviation"
+		},
+		lr: {
+			label: "DND5E.UsesPeriods.Lr",
+			abbreviation: "DND5E.UsesPeriods.LrAbbreviation"
+		},
+		day: {
+			label: "DND5E.UsesPeriods.Day",
+			abbreviation: "DND5E.UsesPeriods.DayAbbreviation"
+		},
+		charges: {
+			label: "DND5E.UsesPeriods.Charges",
+			abbreviation: "DND5E.UsesPeriods.ChargesAbbreviation",
+			formula: true
+		},
+		dawn: {
+			label: "DND5E.UsesPeriods.Dawn",
+			abbreviation: "DND5E.UsesPeriods.DawnAbbreviation",
+			formula: true
+		},
+		dusk: {
+			label: "DND5E.UsesPeriods.Dusk",
+			abbreviation: "DND5E.UsesPeriods.DuskAbbreviation",
+			formula: true
+		},
+		jrny: {
+			label: "LOTR.Journey",
+			abbreviation: "LOTR.Journey",
+			formula: true
+		},
+		adv: {
+			label: "LOTR.Adventure",
+			abbreviation: "LOTR.Adventure",
+			formula: true
+		}
 	};
-	// preLocalize("limitedUsePeriods");
 
 	CONFIG.DND5E.consumableTypes = {
 		ammo: "DND5E.ConsumableAmmunition",
