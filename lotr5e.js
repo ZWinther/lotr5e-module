@@ -72,17 +72,43 @@ Hooks.on('init', async function () {
 	};
 
 	CONFIG.DND5E.consumableTypes = {
-		ammo: "DND5E.ConsumableAmmunition",
-		potion: "DND5E.ConsumablePotion",
-		poison: "DND5E.ConsumablePoison",
-		food: "DND5E.ConsumableFood",
-		//scroll: "DND5E.ConsumableScroll",
-		//wand: "DND5E.ConsumableWand",
-		//rod: "DND5E.ConsumableRod",
-		trinket: "DND5E.ConsumableTrinket"
+		ammo: {
+			label: "DND5E.ConsumableAmmo",
+			subtypes: {
+				arrow: "DND5E.ConsumableAmmoArrow",
+				blowgunNeedle: "DND5E.ConsumableAmmoBlowgunNeedle",
+				crossbowBolt: "DND5E.ConsumableAmmoCrossbowBolt",
+				slingBullet: "DND5E.ConsumableAmmoSlingBullet"
+			}
+		},
+		potion: {
+			label: "DND5E.ConsumablePotion"
+		},
+		poison: {
+			label: "DND5E.ConsumablePoison",
+			subtypes: {
+				contact: "DND5E.ConsumablePoisonContact",
+				ingested: "DND5E.ConsumablePoisonIngested",
+				inhaled: "DND5E.ConsumablePoisonInhaled",
+				injury: "DND5E.ConsumablePoisonInjury"
+			}
+		},
+		food: {
+			label: "DND5E.ConsumableFood"
+		},
+		//scroll: {
+		//	label: "DND5E.ConsumableScroll"
+		//},
+		//wand: {
+		//	label: "DND5E.ConsumableWand"
+		//},
+		//rod: {
+		//	label: "DND5E.ConsumableRod"
+		//},
+		trinket: {
+			label: "DND5E.ConsumableTrinket"
+		}
 	};
-	// preLocalize("consumableTypes", { sort: true });
-
 	CONFIG.DND5E.weaponTypes = {
 		simpleM: "DND5E.WeaponSimpleM",
 		simpleR: "DND5E.WeaponSimpleR",
@@ -92,10 +118,151 @@ Hooks.on('init', async function () {
 		improv: "DND5E.WeaponImprov",
 		siege: "DND5E.WeaponSiege"
 	};
+	CONFIG.DND5E.itemProperties = {
+		// ada: {
+		// 	label: "DND5E.Item.Property.Adamantine",
+		// 	isPhysical: true
+		// },
+		amm: {
+			label: "DND5E.Item.Property.Ammunition"
+		},
+		concentration: {
+			label: "DND5E.Item.Property.Concentration",
+			abbreviation: "DND5E.ConcentrationAbbr",
+			icon: "systems/dnd5e/icons/svg/statuses/concentrating.svg",
+			reference: "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.ow58p27ctAnr4VPH",
+			isTag: true
+		},
+		fin: {
+			label: "DND5E.Item.Property.Finesse"
+		},
+		// fir: {
+		// 	label: "DND5E.Item.Property.Firearm"
+		// },
+		// foc: {
+		// 	label: "DND5E.Item.Property.Focus"
+		// },
+		hvy: {
+			label: "DND5E.Item.Property.Heavy"
+		},
+		lgt: {
+			label: "DND5E.Item.Property.Light"
+		},
+		lod: {
+			label: "DND5E.Item.Property.Loading"
+		},
+		material: {
+			label: "DND5E.Item.Property.Material",
+			abbreviation: "DND5E.ComponentMaterialAbbr",
+			reference: "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.AeH5eDS4YeM9RETC"
+		},
+		mgc: {
+			label: "DND5E.Item.Property.Magical",
+			icon: "systems/dnd5e/icons/svg/properties/magical.svg",
+			isPhysical: true
+		},
+		rch: {
+			label: "DND5E.Item.Property.Reach"
+		},
+		// rel: {
+		// 	label: "DND5E.Item.Property.Reload"
+		// },
+		// ret: {
+		// 	label: "DND5E.Item.Property.Returning"
+		// },
+		ritual: {
+			label: "DND5E.Item.Property.Ritual",
+			abbreviation: "DND5E.RitualAbbr",
+			icon: "systems/dnd5e/icons/svg/items/spell.svg",
+			reference: "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.FjWqT5iyJ89kohdA",
+			isTag: true
+		},
+		// sil: {
+		// 	label: "DND5E.Item.Property.Silvered",
+		// 	isPhysical: true
+		// },
+		somatic: {
+			label: "DND5E.Item.Property.Somatic",
+			abbreviation: "DND5E.ComponentSomaticAbbr",
+			reference: "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.qwUNgUNilEmZkSC9"
+		},
+		spc: {
+			label: "DND5E.Item.Property.Special"
+		},
+		stealthDisadvantage: {
+			label: "DND5E.Item.Property.StealthDisadvantage"
+		},
+		thr: {
+			label: "DND5E.Item.Property.Thrown"
+		},
+		two: {
+			label: "DND5E.Item.Property.TwoHanded"
+		},
+		ver: {
+			label: "DND5E.Item.Property.Versatile"
+		},
+		vocal: {
+			label: "DND5E.Item.Property.Verbal",
+			abbreviation: "DND5E.ComponentVerbalAbbr",
+			reference: "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.6UXTNWMCQ0nSlwwx"
+		},
+		weightlessContents: {
+			label: "DND5E.Item.Property.WeightlessContents"
+		}
+		};
+
+		CONFIG.DND5E.validProperties = {
+		consumable: new Set([
+			"mgc"
+		]),
+		container: new Set([
+			"mgc",
+			"weightlessContents"
+		]),
+		equipment: new Set([
+			"concentration",
+			"mgc"
+		]),
+		feat: new Set([
+			"concentration",
+			"mgc"
+		]),
+		loot: new Set([
+			"mgc"
+		]),
+		weapon: new Set([
+			// "ada",
+			"amm",
+			"fin",
+			// "fir",
+			// "foc",
+			"hvy",
+			"lgt",
+			"lod",
+			"mgc",
+			"rch",
+			// "rel",
+			// "ret",
+			// "sil",
+			"spc",
+			"thr",
+			"two",
+			"ver"
+		]),
+		spell: new Set([
+			"vocal",
+			"somatic",
+			"material",
+			"concentration",
+			"ritual"
+		]),
+		tool: new Set([
+			"concentration",
+			"mgc"
+		])
+		};
 	CONFIG.DND5E.physicalWeaponProperties = {
-		// ada: "DND5E.WeaponPropertiesAda",
-		mgc: "DND5E.WeaponPropertiesMgc",
-		// sil: "DND5E.WeaponPropertiesSil"
+		mgc: "DND5E.WeaponPropertiesMgc"
 	};
 	CONFIG.DND5E.weaponProperties = {
 		...CONFIG.DND5E.physicalWeaponProperties,
