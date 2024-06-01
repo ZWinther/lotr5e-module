@@ -2,7 +2,7 @@
   "id": "lotr5e",
   "title": "Lord of the Rings Roleplaying",
   "description": "Lord of the Rings Roleplaying for the DND5E System.",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "authors": [
     {
       "name": "Winther",
@@ -66,5 +66,5 @@
     }
   ],
   "manifest": "https://raw.githubusercontent.com/ZWinther/lotr5e-module/master/module.json",
-  "download": "https://github.com/ZWinther/lotr5e-module/archive/refs/tags/v0.5.2.zip"
+  "download": "https://github.com/ZWinther/lotr5e-module/archive/refs/tags/v0.5.3.zip"
 }
