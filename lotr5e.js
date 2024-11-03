@@ -132,9 +132,11 @@ Hooks.on('init', async function () {
 	});
 
     loadTemplates([
-		'modules/lotr5e/templates/lotr-miserable-box.hbs',
-		'modules/lotr5e/templates/lotr-scores-end.hbs',
-		'modules/lotr5e/templates/lotr-shadow-path.hbs'
+		'modules/lotr5e/templates/lotr-miserable-box2.hbs',
+		'modules/lotr5e/templates/lotr-summary2.hbs',
+		'modules/lotr5e/templates/lotr-fellowship-box.hbs',
+		'modules/lotr5e/templates/lotr-patron-box.hbs',
+		'modules/lotr5e/templates/lotr-armorProp.hbs'
 	]);
 });
 function formatText(value) {
