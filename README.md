@@ -20,7 +20,7 @@ No content (creatures, items, etc.) is included in this module. It aims purely t
 ## Installation
 Make sure you have the dnd5e system installed, then copy ```https://github.com/ZWinther/lotr5e-module/releases/latest/download/module.json``` and paste it in the manifest url field in Foundry:
 
-![install](install.png)
+![install](install2.png)
 
 ### **Warning**: Actors/worlds made with this module enabled, will most likely break if it's disabled.
 
