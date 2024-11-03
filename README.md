@@ -18,7 +18,11 @@ Languages from LOTR5E also replaces the default 5e languages, as does the curren
 No content (creatures, items, etc.) is included in this module. It aims purely to create a framework for players to use the LOTR5E rules in Foundry VTT.
 
 ## Installation
-Make sure you have the dnd5e system installed, then copy ```https://github.com/ZWinther/lotr5e-module/releases/latest/download/module.json``` and paste it in the manifest url field in Foundry:
+Make sure you have the dnd5e system installed, then either:
+
+- Find the module by searching for it in Foundry's built-in module browser.
+or
+- Copy ```https://github.com/ZWinther/lotr5e-module/releases/latest/download/module.json``` and paste it in the manifest url field in Foundry:
 
 ![install](install2.png)
 
