@@ -4,6 +4,17 @@
   .dnd5e2.sheet.actor.character {
     min-width: 962px;
   }
+  .dnd5e2.sheet.actor.character .ability-scores .rows > div {
+    gap: 18px;
+  }
+  @container (min-width: 700px) {
+    .dnd5e2.sheet.actor.character .ability-scores .rows {
+      gap:18px;
+    }
+  }
+  .dnd5e2.sheet.actor.character .ability-scores .rows {
+    padding-left: 0px;
+  }
   li.lotr5eli {
     margin-top: 10%;
   }
@@ -13,6 +24,14 @@
   }
   label.lotr5eSum span.value {
     width:100%;
+  }
+  .dnd5e2.sheet.actor.character .ability-scores .ability-score[data-ability="sha"]::before,
+  .dnd5e2.sheet.actor.character .ability-scores .ability-score[data-ability="perm"]::before {
+    background: url("../assets/ability-score-tab.svg") transparent no-repeat top center / contain;;
+  }
+  :is(.dnd5e-theme-dark, .theme-dark) .dnd5e2.sheet.actor.character .ability-score[data-ability="sha"]::before, .dnd5e2.sheet.actor.character.dnd5e-theme-dark .ability-score[data-ability="sha"]::before,
+  :is(.dnd5e-theme-dark, .theme-dark) .dnd5e2.sheet.actor.character .ability-score[data-ability="perm"]::before, .dnd5e2.sheet.actor.character.dnd5e-theme-dark .ability-score[data-ability="perm"]::before {
+    background: url("../assets/ability-score-tab-dark.svg") transparent no-repeat top center / contain;
   }
   .dnd5e2.sheet.actor.character .ability-scores .ability-score[data-ability="sha"] > a,
   .dnd5e2.sheet.actor.character .ability-scores .ability-score[data-ability="perm"] > a  {
