@@ -1,0 +1,16 @@
+{{!-- Armor Properties --}}
+    <div class="form-group stacked armor-properties">
+        <label>{{ localize "LOTR.armorProperties" }}</label>
+        <label class="checkbox">
+            <input type="checkbox" name="system.armorProperties.cun" {{checked system.armorProperties.cun}}/> {{ localize "LOTR.ArmorPropertiesCun" }}
+        </label>
+        {{#if_eq system.armor.type 'shield'}}
+        <label class="checkbox">
+            <input type="checkbox" name="system.armorProperties.rei" {{checked system.armorProperties.rei}}/> {{ localize "LOTR.ArmorPropertiesRei" }}
+        </label>
+        {{else}}
+        <label class="checkbox">
+            <input type="checkbox" name="system.armorProperties.clo" {{checked system.armorProperties.clo}}/> {{ localize "LOTR.ArmorPropertiesClo" }}
+        </label>
+        {{/if_eq}}
+    </div>

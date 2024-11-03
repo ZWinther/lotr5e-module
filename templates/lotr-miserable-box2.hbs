@@ -1,0 +1,12 @@
+<button type="button" data-target="mis-checked "class="counter unbutton miserable" 
+    aria-label="{{ localize "LOTR.Miserable" }}" 
+    data-tooltip="LOTR.Miserable"
+    aria-pressed="{{ flags.lotr5e.attributes.miserable }}">
+        <input type="checkbox" data-input="mis-checked" name="flags.lotr5e.attributes.miserable" data-dtype="Boolean" {{checked flags.lotr5e.attributes.miserable}}/>
+</button>
+<button type="button" data-target="ang-checked "class="counter unbutton anguished" 
+    aria-label="{{ localize "LOTR.Anguished" }}" 
+    data-tooltip="LOTR.Anguished"
+    aria-pressed="{{ flags.lotr5e.attributes.anguished }}">
+        <input type="checkbox" data-input="ang-checked" name="flags.lotr5e.attributes.anguished" data-dtype="Boolean" {{checked flags.lotr5e.attributes.anguished}}/>
+</button>
