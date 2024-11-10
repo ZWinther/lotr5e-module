@@ -39,11 +39,6 @@ Hooks.on('init', async function () {
 	delete CONFIG.DND5E.consumableTypes.wand;
 	delete CONFIG.DND5E.consumableTypes.rod;
 
-	delete CONFIG.DND5E.itemProperties.fir;
-	delete CONFIG.DND5E.itemProperties.foc;
-	delete CONFIG.DND5E.itemProperties.rel;
-	delete CONFIG.DND5E.itemProperties.ret;
-
 	Object.assign(CONFIG.DND5E.itemProperties, {
 		fel: { label: "LOTR.WeaponPropertiesFel" },
 		gri: { label: "LOTR.WeaponPropertiesGri" },
@@ -55,8 +50,12 @@ Hooks.on('init', async function () {
 
 	const validWProperties = [ 'fel', 'gri', 'kee' ];
 	validWProperties.forEach(item => CONFIG.DND5E.validProperties.weapon.add(item));
+	const removedWProperties = [ 'fir', 'foc', 'rel', 'ret' ];
+	removedWProperties.forEach(item => CONFIG.DND5E.validProperties.weapon.delete(item));
 	const validAProperties = [ 'clo', 'cun', 'rei' ];
 	validAProperties.forEach(item => CONFIG.DND5E.validProperties.equipment.add(item));
+	const removedAProperties = [ 'foc' ];
+	removedAProperties.forEach(item => CONFIG.DND5E.validProperties.equipment.delete(item));
 
 	CONFIG.DND5E.armorProperties = {
 		clo: "LOTR.ArmorPropertiesClo",
