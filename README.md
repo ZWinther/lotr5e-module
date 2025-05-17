@@ -1,3 +1,11 @@
+# Notice
+
+Due to health issues, my ability to keep this system updated is limited.
+
+Expect long delays in compatibility updates.
+
+I apologize for any inconvenience.
+
 # The Lord of the Rings Roleplaying 5E
 The Lord of the Rings Roleplaying 5E is a module for Foundry VTT's DND5E system. It allows players to play DND5E using the rules from Free League's Lord of the Rings system: The Lord of the Rings Roleplaying 5E.
 
