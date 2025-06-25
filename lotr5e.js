@@ -1,11 +1,4 @@
-// Remind users to install/enable libwrapper
-Hooks.once('ready', () => {
-    if(!game.modules.get('lib-wrapper')?.active && game.user.isGM)
-        ui.notifications.error("The Lord of the Rings Roleplaying 5E requires the 'libWrapper' module. Please install and activate it.");
-});
-
 // Handlebars helpers
-
 // less than
 Handlebars.registerHelper('lst', function( a, b ){
 	var next =  arguments[arguments.length-1];
@@ -28,12 +21,15 @@ Handlebars.registerHelper('if_eq', function(a, b, opts) {
         return opts.inverse(this);
     }
 });
-Hooks.on('init', async function () {
+
+Hooks.on('init', function () {
+
 	// CONFIG CHANGES
 	Object.assign(CONFIG.DND5E.limitedUsePeriods, {
 		jrny: { label: "LOTR.Journey", abbreviation: "LOTR.JourneyAbbr" },
 		adv: { label: "LOTR.Adventure", abbreviation: "LOTR.AdventureAbbr" }
 	});
+	
 
 	delete CONFIG.DND5E.consumableTypes.scroll;
 	delete CONFIG.DND5E.consumableTypes.wand;
@@ -62,28 +58,33 @@ Hooks.on('init', async function () {
 		cun: "LOTR.ArmorPropertiesCun",
 		rei: "LOTR.ArmorPropertiesRie"
 	};
+
 	CONFIG.DND5E.currencies = {
-	gp: {
-		label: "LOTR.CoinsGP",
-		abbreviation: "LOTR.CoinsAbbrGP",
-		conversion: 1
-	},
-	sp: {
-		label: "LOTR.CoinsSP",
-		abbreviation: "LOTR.CoinsAbbrSP",
-		conversion: 10
-	},
-	cp: {
-		label: "LOTR.CoinsCC",
-		abbreviation: "LOTR.CoinsAbbrCC",
-		conversion: 100
-	}
+		gp: {
+			label: "LOTR.CoinsGP",
+			abbreviation: "LOTR.CoinsAbbrGP",
+			conversion: 1
+		},
+		sp: {
+			label: "LOTR.CoinsSP",
+			abbreviation: "LOTR.CoinsAbbrSP",
+			conversion: 10
+		},
+		cp: {
+			label: "LOTR.CoinsCC",
+			abbreviation: "LOTR.CoinsAbbrCC",
+			conversion: 100
+		}
 	};
-	Object.assign(CONFIG.DND5E.toolTypes, {
-		pipe: "LOTR.ToolPipeProf"
+
+	Object.assign(CONFIG.DND5E.tools, {
+		Pipes: {
+			ability: "wis",
+			id: "Compendium.lotr5e.lotr5e.Item.vthUKRqJtI0Cx9xe"
+		}
 	});
 
-	Object.assign(CONFIG.DND5E.toolProficiencies, {
+	Object.assign(CONFIG.DND5E.toolTypes, {
 		pipe: "LOTR.ToolPipeProf"
 	});
 
@@ -104,21 +105,35 @@ Hooks.on('init', async function () {
 	});
 
 	Object.assign(CONFIG.DND5E.abilities, {
-		sha: { label: "LOTR.AbilitySha", abbreviation: "DND5E.AbilityShaAbbr", type: "mental", defaults: { vehicle: 0 }, improvement: false },
-		perm: {	label: "LOTR.AbilityPerm", abbreviation: "DND5E.AbilityPermAbbr", type: "mental", defaults: { vehicle: 0 }, improvement: false }
+		sha: { label: "LOTR.AbilitySha", abbreviation: "LOTR.AbilityShaAbbr", fullKey: "", type: "mental", defaults: { vehicle: 0 }, improvement: false },
+		perm: {	label: "LOTR.AbilityPerm", abbreviation: "LOTR.AbilityPermAbbr", fullKey: "", type: "mental", defaults: { vehicle: 0 }, improvement: false }
 	});
-
+	
 	CONFIG.DND5E.languages = {
-		common: "LOTR.LanguagesCommon",
-		blackspeech: "LOTR.LanguagesBlackSpeech",
-		ancient: "LOTR.LanguagesQuenya",
-		sindarin: "LOTR.LanguagesSindarin",
-		dalish: "LOTR.LanguagesDalish",
-		vale: "LOTR.LanguagesVale",
-		dwarvish: "LOTR.LanguagesDwarvish",
-		woodland: "LOTR.LanguagesWoodland",
-		rohan: "LOTR.LanguagesRohan",
-		orkish: "LOTR.LanguagesOrkish"
+		standard: {
+			label: "LOTR.Language.Category.Good",
+			selectable: false,
+			children: {
+				common: "LOTR.LanguagesCommon",
+				ancient: "LOTR.LanguagesQuenya",
+				sindarin: "LOTR.LanguagesSindarin",
+				dalish: "LOTR.LanguagesDalish",
+				vale: "LOTR.LanguagesVale",
+				dwarvish: "LOTR.LanguagesDwarvish",
+				woodland: "LOTR.LanguagesWoodland",
+				rohan: "LOTR.LanguagesRohan"
+			}
+		},
+		exotic: {
+			label: "LOTR.Language.Category.Evil",
+			selectable: false,
+			children: {
+				orkish: "LOTR.LanguagesOrkish",
+				blackspeech: "LOTR.LanguagesBlackSpeech",
+				warg: "LOTR.LanguagesWarg",
+				dunlendish: "LOTR.LanguagesDunlendish"
+			}
+		}
 	};
 
 	game.settings.register("lotr5e", "spellbookToggle", {
@@ -130,7 +145,7 @@ Hooks.on('init', async function () {
 		type: Boolean
 	});
 
-    loadTemplates([
+    foundry.applications.handlebars.loadTemplates([
 		'modules/lotr5e/templates/lotr-miserable-box2.hbs',
 		'modules/lotr5e/templates/lotr-summary2.hbs',
 		'modules/lotr5e/templates/lotr-fellowship-box.hbs',
@@ -141,17 +156,19 @@ Hooks.on('init', async function () {
 function formatText(value) {
 	return new Handlebars.SafeString(value?.replaceAll("\n", "<br>") ?? "");
 }
-Hooks.on('renderActorSheet5eCharacter2', async function (app, html, data) {
+Hooks.on('renderCharacterActorSheet', async function (app, html, data) {
 	const actor = data.actor;
 		const misBox2 = "/modules/lotr5e/templates/lotr-miserable-box2.hbs"
-		const misHtml2 = await renderTemplate(misBox2, actor);
+		const misHtml2 = await foundry.applications.handlebars.renderTemplate(misBox2, actor);
 		var inspDiv2 = $(html).find("button.inspiration");
 		inspDiv2.after(misHtml2);
 
 		const bio2 = "/modules/lotr5e/templates/lotr-summary2.hbs"
-		const bioHtml2 = await renderTemplate(bio2, data);
+		const bioHtml2 = await foundry.applications.handlebars.renderTemplate(bio2, data);
 		var bioDiv2 = $(html).find('ul.characteristics');
 		bioDiv2.append(bioHtml2);
+
+		
 
 		const lotrScores = $(html).find('.ability-score[data-ability="sha"], .ability-score[data-ability="perm"]');
         lotrScores.each(function() {
@@ -161,7 +178,6 @@ Hooks.on('renderActorSheet5eCharacter2', async function (app, html, data) {
 			let lotrScoreNewMod;
             if (lotrScore[0]?.innerHTML.includes('input')) {
                 lotrScoreNewMod = lotrScore.find('input').val();
-				console.log(lotrScoreNewMod);
             } else {
                 lotrScoreNewMod = lotrScore.text();
             }
@@ -174,6 +190,15 @@ Hooks.on('renderActorSheet5eCharacter2', async function (app, html, data) {
 		if (game.settings.get("lotr5e", "spellbookToggle")) {
 			$(html).find('*[data-tab="spells"]').remove()
 		};
+
+		const misButton = $(html).find('button.miserable');
+		misButton.on('click', async function() {
+			app.submit({ updateData: { "flags.lotr5e.attributes.miserable": !actor.flags.lotr5e.attributes.miserable } });
+		});
+		const angButton = $(html).find('button.anguished');
+		angButton.on('click', async function() {
+			app.submit({ updateData: { "flags.lotr5e.attributes.anguished": !actor.flags.lotr5e.attributes.anguished } });
+		});
 });
 Hooks.on('renderGroupActorSheet', async function (app, html, data) { 
 		const actor = data.actor;
