@@ -1,27 +1,6 @@
 {
-"DND5E.ClassIdentifier": "Calling Identifier",
-"DND5E.ClassIdentifierHint": "This calling's data will be accessible using <strong>@classes.{identifier}</strong> in roll formulas.",
-"DND5E.ClassLevels": "Calling Levels",
-"DND5E.ClassMakeOriginal": "Original Calling",
-"DND5E.ClassMakeOriginalHint": "First calling taken by character used to determine certain calling traits when multiclassing.",
-"DND5E.ClassName": "Calling Name",
-"DND5E.ClassOriginal": "Original Calling",
-"DND5E.ClassSkillsNumber": "Number of Starting Skills",
-"DND5E.ClassSkillsEligible": "Eligible Calling Skills",
-"DND5E.ClassSkillsChosen": "Chosen Calling Skills",
-"DND5E.SubclassIdentifierHint": "This identifier should match the identifier on the parent calling to ensure they are properly linked.",
-"DND5E.SubclassAssignmentError": "{class} already has a subcalling. Remove the existing '{subclass}' subcalling before adding a new one.",
-"DND5E.SubclassDuplicateError": "A subcalling with the identifier {identifier} already exists on this actor.",
-"DND5E.SubclassMismatchWarn": "{name} subcalling has no matching calling with identifier '{class}'.",
-"DND5E.SubclassName": "Subclass Name",
 "DND5E.Feats": "Virtues",
 "DND5E.FlagsInitiativeAdvHint": "Provided by virtues or magical items.",
-"DND5E.ItemTypeClass": "Calling",
-"DND5E.ItemTypeClassPl": "Calling Levels",
-"DND5E.ItemTypeSubclass": "Subcalling",
-"DND5E.ItemTypeSubclassPl": "Subcallings",
-"ITEM.TypeSubclass": "Subcalling",
-"ITEM.TypeClass": "Calling",
 "ITEM.TypeCraft": "Craft",
 "ITEM.Virtue": "Virtue",
 "ACTOR.TypeGroup": "Company",
@@ -32,20 +11,6 @@
 "DND5E.Group": { "Type": "Company Type", "TypeParty": "Company" },
 "LOTR.Patron": "Patron",
 "DND5E.AdvancementItemGrantHint": "Grant the character items (such as equipment, virtues, or crafts) when they reach a certain level.",
-"DND5E.AdvancementClassRestriction": "Calling Restriction",
-"DND5E.AdvancementClassRestrictionNone": "All Callings",
-"DND5E.AdvancementClassRestrictionPrimary": "Original Calling Only",
-"DND5E.AdvancementClassRestrictionSecondary": "Multiple Callings Only",
-"DND5E.AdvancementHitPointsHint": "Track the player's hit points for each level in the calling.",
-"DND5E.AdvancementLevelDownConfirmationMessage": "Leveling this calling down will also undo all advancement choices made for it. These changes will be removed from your character as long as the checkbox below is checked.",
-"DND5E.AdvancementManagerLevelNewClassTitle": "Add Calling",
-"DND5E.AdvancementScaleValueHint": "A single value that changes as a calling increases in level that is made available in roll formulas.",
-"DND5E.HitDiceConfigHint": "Adjust remaining hit dice levels for each calling.",
-"DND5E.LongRestHint": "Take a long rest? On a long rest you will recover hit points, half your maximum hit dice, calling resources, and limited use item charges.",
-"DND5E.MaxClassLevelExceededWarn": "Calling cannot be advanced past level {max}.",
-"DND5E.MaxClassLevelMinimumWarn": "Calling must have at least one level.",
-"DND5E.PolymorphKeepClass": "Keep proficiency bonus (leaves calling items in sheet)",
-"DND5E.PolymorphTmpClass": "Temporary Calling",
 "LOTR.WeaponPropertiesFel": "Fell",
 "LOTR.WeaponPropertiesGri": "Grievous",
 "LOTR.WeaponPropertiesKee": "Keen",
@@ -68,6 +33,8 @@
 "LOTR.SkillTra": "Travel",
 "LOTR.SkillIns": "Insight",
 "LOTR.SkillMed": "Medicine",
+"LOTR.Language.Category.Good": "Languages of the Free People",
+"LOTR.Language.Category.Evil": "Languages of the Enemy",
 "LOTR.LanguagesCommon": "Westron",
 "LOTR.LanguagesBlackSpeech": "Black Speech",
 "LOTR.LanguagesQuenya": "Quenya",
@@ -78,14 +45,386 @@
 "LOTR.LanguagesWoodland": "Woodland Tongue",
 "LOTR.LanguagesRohan": "Rohirric",
 "LOTR.LanguagesOrkish": "Orkish",
+"LOTR.LanguagesWarg": "Warg-Speech",
+"LOTR.LanguagesDunlendish": "Dunlendish",
+
 "LOTR.Journey": "Journey",
 "LOTR.Adventure": "Adventure",
-"DND5E.AbilityShaAbbr": "sha",
-"DND5E.AbilityPermAbbr": "sca",
-"DND5E.Race": "Culture",
-"DND5E.RaceAdd": "Add Culture",
-"DND5E.Class": "Calling",
+"LOTR.AbilityShaAbbr": "sha",
+"LOTR.AbilityPermAbbr": "sca",
+
+"TYPES.Item.class": "Calling",
+"TYPES.Item.classPl": "Callings",
+"TYPES.Item.race": "Culture",
+"TYPES.Item.racePl": "Cultures",
+"TYPES.Item.raceLegacy": "Culture",
+"TYPES.Item.raceLegacyPl": "Cultures",
+"TYPES.Item.subclass": "Subcalling",
+"TYPES.Item.subclassPl": "Subcallings",
+
 "DND5E.ClassAdd": "Add Calling",
+"DND5E.ClassIdentifier": "Calling Identifier",
+"DND5E.ClassIdentifierHint": "This calling's data will be accessible using <strong>@classes.{identifier}</strong> in roll formulas.",
+"DND5E.ClassLevels": "Calling Levels",
+"DND5E.ClassMakeOriginal": "Original Calling",
+"DND5E.ClassMakeOriginalHint": "First calling taken by character used to determine certain calling traits when multiclassing.",
+"DND5E.ClassName": "Calling Name",
+"DND5E.ClassOriginal": "Original Calling",
+
+"DND5E.Species": {
+    "Label": "Culture",
+    "Add": "Add Culture",
+    "AddLegacy": "Add Culture",
+    "Features": "Culture Features",
+    "FeaturesLegacy": "Culture Features",
+    "Name": "Culture Name"
+},
+
+"DND5E.ADVANCEMENT": {
+    "AbilityScoreImprovement": {
+    "Action": {
+        "Select": "Select Virtue"
+    },
+
+    "Details": "Improvement Details",
+    "Feat": {
+        "ASIName": "Ability Score Improvement Virtue",
+        "Hint": "Drop a virtue here to choose one instead of an ability score improvement."
+    },
+
+    "Hint": "Allow the player to increase one or more ability scores or take an optional virtue.",
+    "Journal": {
+        "DescriptionLegacy": "<p>When you reach {firstLevelOrdinal} level, and again at {otherLevelsOrdinal} level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can’t increase an ability score above {maxAbilityScore} using this feature.</p><p>Using the optional virtue rule, you can forgo taking this feature to take a virtue of your choice instead.</p>",
+        "DescriptionModern": "<p>You gain the Ability Score Improvement virtue or another virtue of your choice for which you qualify. You gain this feature again at {class} levels {otherLevels}.</p>",
+        "Name": "Ability Score Improvement"
+    },
+    "LockedHint": "Scores cannot be modified with a virtue selected.",
+    "PointsRemaining": {
+        "one": "{points} Point Remaining",
+        "other": "{points} Points Remaining"
+    },
+    "Title": "Ability Score Improvement",
+    "Warning": {
+        "Level": "Must be at least level {level} to take this virtue.",
+        "Type": "Only features with the \"virtue\" type can be selected."
+    }
+    },
+    "Action": {
+    "Create": "Create Advancement",
+    "Delete": "Delete Advancement",
+    "Duplicate": "Duplicate Advancement",
+    "Edit": "Edit Advancement",
+    "View": "View Advancement"
+    },
+    "Config": {
+    "AnyLevel": "Any",
+    "Details": "Advancement Details"
+    },
+    "HitPoints": {
+    "Action": {
+        "Roll": "Roll {die}"
+    },
+    "Average": "Average",
+    "Hint": "Track the player's hit points for each level in the calling.",
+    "MaxAtFirstLevel": "Max at 1st Level: <strong>{max}</strong>",
+    "Roll": "Roll {class} Hit Points",
+    "Starting": "Hit Points at 1st Level",
+    "TakeAverage": "Take Average",
+    "Title": "Hit Points",
+    "Warning": {
+        "Empty": "Hit points must be rolled or the average value must be taken.",
+        "Invalid": "Hit points must be a valid whole number."
+    }
+    },
+    "ItemChoice": {
+    "Choose": "choose {count}",
+    "Chosen": "Chosen: {current} of {max}",
+    "Details": "Choice Details",
+    "DropHint": "Drop Items here to add them to the list that can be chosen with this advancement.",
+    "FIELDS": {
+        "allowDrops": {
+        "hint": "Allow players to be able to drop their own choices into this advancement.",
+        "label": "Allow Drops"
+        },
+        "choices": {
+        "hint": "Specify how many choices are allowed at each level.",
+        "label": "Choices",
+        "FIELDS": {
+            "count": {
+            "label": "Count"
+            },
+            "replacement": {
+            "label": "Allow Replacement"
+            }
+        }
+        },
+        "pool": {
+        "label": "Item Options"
+        },
+        "restriction": {
+        "level": {
+            "Available": "Any Available Level",
+            "hint": "Only allow choices from spells of this level.",
+            "label": "Spell Level"
+        },
+        "subtype": {
+            "label": "Subtype"
+        },
+        "type": {
+            "label": "Type"
+        }
+        },
+        "type": {
+        "Any": "Anything",
+        "hint": "Restrict what Item types can be chosen.",
+        "label": "Item Type"
+        }
+    },
+    "Hint": "Present the player with a choice of items (such as equipment, features, or spells) that they can choose for their character at one or more levels.",
+    "Replacement": {
+        "None": "No Replacement",
+        "Title": "replace"
+    },
+    "Title": "Choose Items",
+    "Warning": {
+        "FeatureLevel": "Must be at least level {level} to take this feature.",
+        "InvalidType": "Only {type} items can be selected for this choice.",
+        "NoOriginal": "Previously selected choice no longer available for replacement.",
+        "PreviouslyChosen": "This item has already been chosen at a previous level.",
+        "SpellLevelAvailable": "Only {level} or lower spells can be chosen for this advancement.",
+        "SpellLevelSpecific": "Only {level} spells can be chosen for this advancement."
+    }
+    },
+    "ItemGrant": {
+    "Details": "Grant Details",
+    "DropHint": "Drop Items here to add them to the list granted by this advancement.",
+    "FIELDS": {
+        "items": {
+        "label": "Items"
+        },
+        "optional": {
+        "label": "Optional",
+        "hint": "If the whole advancement is marked optional, players may opt out of any of the following items, otherwise all non-optional items are granted."
+        }
+    },
+    "Hint": "Grant the character items (such as equipment, features, or spells) when they reach a certain level.",
+    "Title": "Grant Items",
+    "Warning": {
+        "Container": "Container contents will not be added with containers.",
+        "Duplicate": "That item already exists on this advancement.",
+        "Recursive": "You cannot grant an item in its own advancement."
+    }
+    },
+    "Manager": {
+    "Action": {
+        "Complete": "Complete",
+        "NextStep": "Next",
+        "PreviousStep": "Previous",
+        "Restart": "Restart"
+    },
+    "ClosePrompt": {
+        "Action": {
+        "Continue": "Continue",
+        "Stop": "Stop Advancement"
+        },
+        "Message": "<p>If the advancement process is cancelled, choices made so far will be discarded and no changes will be made to the actor.</p>",
+        "Title": "Stop Advancement"
+    },
+    "RestartPrompt": {
+        "Message": "Are you sure you wish to undo all choices so far?",
+        "Title": "Restart Advancement Choices"
+    },
+    "Steps": "Step {current} of {total}",
+    "Title": {
+        "Default": "Advancement",
+        "LevelIncreased": "Level Up Character",
+        "LevelNewClass": "Add calling",
+        "ModifyChoices": "Modify Choices"
+    }
+    },
+    "Migration": {
+    "Action": {
+        "Confirm": "Apply Migrations"
+    },
+    "Hint": "Select which of the following advancements will be added to {name}.",
+    "Selection": "Advancement Selection",
+    "Title": "Migrate Advancement"
+    },
+    "ScaleValue": {
+    "Action": {
+        "CopyFormula": "Copy Formula"
+    },
+    "Details": "Scale Value Details",
+    "FIELDS": {
+        "distance": {
+        "units": {
+            "label": "Distance Units"
+        }
+        },
+        "identifier": {
+        "label": "Identifier"
+        },
+        "scale": {
+        "label": "Scale"
+        },
+        "type": {
+        "label": "Scale Type"
+        }
+    },
+    "Hint": "A single value that changes as a calling increases in level that is made available in roll formulas (such as a Monk's martial arts die).",
+    "Title": "Scale Value",
+    "Type": {
+        "CR": {
+        "FIELDS": {
+            "value": {
+            "label": "CR"
+            }
+        },
+        "Hint": "Use this for representing creature challenge ratings for features like Wild Shape",
+        "Label": "Challenge Rating"
+        },
+        "Dice": {
+        "FIELDS": {
+            "faces": {
+            "label": "Faces"
+            },
+            "number": {
+            "label": "Number"
+            }
+        },
+        "Hint": "Use this for dice values like bardic inspiration, sneak attack, or superiority dice.",
+        "Identifier": "This scale value for the current level will be available in a formula using:<br><copyable-text>@scale.{class}.{identifier}</copyable-text> - whole formula (<code>4d6</code>)<br><copyable-text>@scale.{class}.{identifier}.die</copyable-text> - whole die (<code>d6</code>)<br><copyable-text>@scale.{class}.{identifier}.number</copyable-text> - number of dice (<code>4</code>)<br><copyable-text>@scale.{class}.{identifier}.faces</copyable-text> - number of faces (<code>6</code>)",
+        "Label": "Dice"
+        },
+        "Distance": {
+        "Hint": "Use this for numerical values that represent a distance, such as unarmored movement speed, or aura of protection radius.",
+        "Label": "Distance"
+        },
+        "Number": {
+        "Hint": "Use this for purely numerical values like rage damage bonus or number of uses per day.",
+        "Label": "Numeric"
+        },
+        "String": {
+        "FIELDS": {
+            "value": {
+            "label": "Value"
+            }
+        },
+        "Hint": "Use this if you are unsure of the type of the scale values, or if the type does not matter.",
+        "Identifier": "This scale value for the current level will be available in a formula using:<br><copyable-text>@scale.{class}.{identifier}</copyable-text>",
+        "Label": "Anything"
+        }
+    }
+    },
+    "Size": {
+    "DefaultHint": {
+        "Multiple": "Choose your size from either {sizes}.",
+        "Single": "Your size is {size}."
+    },
+    "FIELDS": {
+        "sizes": {
+        "label": "Sizes"
+        }
+    },
+    "Hint": "Set a character's size.",
+    "Title": "Size"
+    },
+    "SPELLCONFIG": {
+    "FIELDS": {
+        "spell": {
+        "label": "Spell Details",
+        "ability": {
+            "label": "Ability"
+        },
+        "preparation": {
+            "label": "Preparation Mode"
+        },
+        "uses": {
+            "max": {
+            "label": "Uses"
+            },
+            "per": {
+            "label": "Period"
+            },
+            "requireSlot": {
+            "label": "Require Slot",
+            "hint": "Require a spell slot to be spent when using the limited uses. If not checked then the uses will be additional free uses that don't consume a slot."
+            }
+        }
+        }
+    },
+    "FreeCasting": "Free Casting"
+    },
+    "Subclass": {
+    "Action": {
+        "Select": "Select subcalling"
+    },
+    "Hint": "Specify what level this calling receives its subcalling.",
+    "Title": "subcalling",
+    "Warning": {
+        "InvalidType": "Only subclasses may be selected."
+    }
+    },
+    "Trait": {
+    "Action": {
+        "AddChoice": "Add Choice",
+        "RemoveChoice": "Remove Choice"
+    },
+    "ChoicesRemaining": "Select {count} more {type}",
+    "Details": "Trait Details",
+    "FIELDS": {
+        "allowReplacements": {
+        "hint": "If a trait is already set on the actor, allow the player to choose from any other trait as a replacement.",
+        "label": "Allow Replacements"
+        },
+        "choices": {
+        "hint": "The following traits will be presented as a choice to the player.",
+        "label": "Choices",
+        "FIELDS": {
+            "count": {
+            "label": "Count"
+            },
+            "pool": {
+            "label": "Traits"
+            }
+        }
+        },
+        "grants": {
+        "hint": "The following traits will be granted to the character as long as they don't already possess that trait.",
+        "label": "Guaranteed"
+        },
+        "mode": {
+        "label": "Mode"
+        }
+    },
+    "Hint": "Grant a character certain traits or give them an option to select traits (such as proficiencies, skills, languages).",
+    "Mode": {
+        "Default": {
+        "Hint": "Gain a trait or proficiency.",
+        "Label": "Default"
+        },
+        "Expertise": {
+        "Hint": "Gain expertise in a trait in which you already have proficiency.",
+        "Label": "Expertise"
+        },
+        "Force": {
+        "Hint": "Gain expertise in a trait regardless of your previous proficiency level.",
+        "Label": "Forced Expertise"
+        },
+        "Mastery": {
+        "Hint": "Gain mastery with a weapon in which you already have proficiency.",
+        "Label": "Mastery"
+        },
+        "Upgrade": {
+        "Hint": "Gain proficiency in a trait unless you already have it, otherwise gain expertise.",
+        "Label": "Upgrade"
+        }
+    },
+    "TraitType": "Trait Type",
+    "Title": "Traits"
+    }
+},
+
 "LOTR.ShadowPath": "Shadow Path",
 "LOTR.Feature": "Distinguishing Feature",
 "LOTR.LivingStandard": "Standard of Living",
