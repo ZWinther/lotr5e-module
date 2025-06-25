@@ -60,13 +60,16 @@
     width: var(--size);
     height: var(--size);
     background: transparent url("../../../systems/dnd5e/ui/inspiration.webp") no-repeat center / contain;
-    filter: drop-shadow(0 3px 4px var(--dnd5e-shadow-45));
+    filter: drop-shadow(0 3px 4px var(--dnd5e-shadow-45)) hue-rotate(342deg);
     display: grid;
     place-content: center;
   }
-  .dnd5e2.sheet.actor.character .sheet-header > .right .miserable:hover {
-    box-shadow: none;
-    filter: drop-shadow(0 3px 4px rgba(255, 255, 255, 0.5));
+  .dnd5e2.sheet.actor.character .sheet-header > .right .miserable[aria-pressed="false"]:hover {
+    filter: drop-shadow(black 0px 0px 10px);
+  }
+  .dnd5e2.sheet.actor.character .sheet-header > .right .miserable[aria-pressed="true"] {
+    filter: drop-shadow(0 3px 4px var(--dnd5e-shadow-45)) hue-rotate(340deg) saturate(1.5);
+    transition: all 0.5s !important;
   }
   .dnd5e2.sheet.actor.character .miserable[aria-pressed="true"]::after {
     content: "";
@@ -74,7 +77,7 @@
     height: calc(var(--size) / 4 - 1px);
     background: white;
     transform: rotate(45deg);
-    box-shadow: 0 0 8px 3px orangered;
+    box-shadow: 0 0 8px 3px rgb(0, 0, 0);
     animation: pulsate-miserable 3s infinite ease-in-out;
     position: absolute;
     right: calc(var(--size) / 2.66);
@@ -82,13 +85,13 @@
   }
   @keyframes pulsate-miserable {
     0% {
-      box-shadow: 0 0 8px 3px orangered;
+      box-shadow: 0 0 8px 3px #79662b;
     }
     50% {
-      box-shadow: 0 0 8px 4px orangered;
+      box-shadow: 0 0 8px 4px #79662b;
     }
     100% {
-      box-shadow: 0 0 8px 3px orangered;
+      box-shadow: 0 0 8px 3px #79662b;
     }
   }
   .dnd5e2.sheet.actor.character .sheet-header > .right .anguished {
@@ -103,16 +106,21 @@
     filter: drop-shadow(0 3px 4px var(--dnd5e-shadow-45));
     display: grid;
     place-content: center;
-  }
-  .dnd5e2.sheet.actor.character .sheet-header > .right .anguished:hover {
     box-shadow: none;
-    filter: drop-shadow(0 3px 4px rgba(255, 255, 255, 0.5));
+
+  }
+  .dnd5e2.sheet.actor.character .sheet-header > .right .anguished[aria-pressed="false"]:hover {
+    filter: drop-shadow(black 0px 0px 10px);
+  }
+  .dnd5e2.sheet.actor.character .sheet-header > .right .anguished[aria-pressed="true"] {
+    filter: drop-shadow(0 3px 4px var(--dnd5e-shadow-45)) hue-rotate(320deg) saturate(2.5) brightness(0.8);
+    transition: all 0.5s !important;
   }
   .dnd5e2.sheet.actor.character .anguished[aria-pressed="true"]::after {
     content: "";
     width: calc(var(--size) / 4 - 1px);
     height: calc(var(--size) / 4 - 1px);
-    background: white;
+    background: rgb(0, 0, 0);
     transform: rotate(45deg);
     box-shadow: 0 0 8px 3px black;
     animation: pulsate-anguished 3s infinite ease-in-out;
@@ -137,8 +145,35 @@
     }
   }
 
-
-
+  :is(.dnd5e2, .dnd5e2-journal) :is(i, span).currency{
+    &.cp:after {
+      content: "CC";
+      margin-top: -1px;
+      font-size: var(--font-size-13);
+      color: #c9986a;
+      font-style: normal;
+      display: block;
+      height: 15px !important;
+    }
+    &.sp:after {
+      content: "SP";
+      margin-top: -1px;
+      font-size: var(--font-size-13);
+      color: #bbb;
+      font-style: normal;
+      display: block;
+      height: 15px !important;
+    }
+    &.gp:after {
+      content: "GP";
+      margin-top: -1px;
+      font-size: var(--font-size-13);
+      color: #dfd476;
+      font-style: normal;
+      display: block;
+      height: 15px !important;
+    }
+  }
 
  /* ----------------------------------------- */
 .dnd5e.sheet.actor.character .ability-scores {
@@ -282,264 +317,4 @@
 .dnd5e.sheet.actor .sheet-header .summary2 select {
   position: relative;
   top: -4px;
-}
-
-  /* ----------------------------------------- */
-  /*  Basic Structure                          */
-  /* ----------------------------------------- */
-  /* ----------------------------------------- */
-  /*  Sheet Header                             */
-  /* ----------------------------------------- */
-  /* ----------------------------------------- */
-  /*  Sheet Body                               */
-  /* ----------------------------------------- */
-  /* ----------------------------------------- */
-  /*  Item Controls                            */
-  /* ----------------------------------------- */
-  /* ----------------------------------------- */
-  /*  Biography                                */
-  /* ----------------------------------------- */
-
-  /* ----------------------------------------- */
-  /*  RPG-Styled UI                            */
-  /* ----------------------------------------- */
-
-.control {
-    font-family: arial;
-    position: relative !important;
-    padding-left: 18px !important;
-    margin-bottom: 5px;
-    padding-top: 3px;
-    font-size: 16px;
-}
-.control input {
-        position: absolute !important;
-        z-index: -1 !important;
-        opacity: 0 !important;
-}
-.control-res input {
-        position: absolute !important;
-        z-index: -1 !important;
-        opacity: 0 !important;
-}
-.control_indicator {
-    position: absolute;
-    top: 4px;
-    left: 0;
-    height: 18px;
-    width: 18px;
-    background: #ffffff14;
-    border: 0px solid #000000;
-    border-radius: 0px;
-}
-.ctrlNew {
-    top: -5px;
-    height: 17px;
-    width: 17px;
-}
-.control:hover input ~ .control_indicator,
-.control input:focus ~ .control_indicator {
-    background: #ffffff35;
-}
-
-.control input:checked ~ .control_indicator {
-    background: #532a1f70;
-}
-.control:hover input:not([disabled]):checked ~ .control_indicator,
-.control input:checked:focus ~ .control_indicator {
-    background: #ffffff14;
-}
-.control input:disabled ~ .control_indicator {
-    background: #e6e6e6;
-    opacity: 1;
-    pointer-events: none;
-}
-.control_indicator:after {
-    box-sizing: unset;
-    content: '';
-    position: absolute;
-    display: none;
-}
-.control input:checked ~ .control_indicator:after {
-    display: block;
-}
-.control-checkbox .control_indicator:after {
-    left: 7px;
-    top: 3px;
-    width: 3px;
-    height: 8px;
-    border: solid #786a57;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-}
-.control-checkbox input:disabled ~ .control_indicator:after {
-    border-color: #7b7b7b;
-}
-  /* ----------------------------------------- */
-  /*  Tidy5e Compatibility                     */
-  /* ----------------------------------------- */
-.tidy5e.sheet.actor {
-  min-width: 816px !important;
-}
-.ability-name.box-title.rollable[title="Shadow"] {
-  pointer-events: none !important;
-}
-.ability-name.box-title.rollable[title="Scars"] {
-  pointer-events: none !important;
-}
-.lotrTidySummary {
-  height: 12px;
-  display: flex;
-}
-.lotrTidySummary input {
-  line-height: 12px !important;
-  height: 12px;
-  width: auto !important;
-}
-.disfeat {
-  min-width: 126px !important;
-}
-.living {
-  min-width: 126px !important;
-}
-.disfeat {
-  min-width: 126px !important;
-}
-.tidy5e.sheet.actor .playerName {
-  min-width: 20px !important;
-}
-.tidy5e.sheet.actor .inspirationOnHover .miserable {
-  display: none;
-}
-.tidy5e.sheet.actor .inspirationOnHover:hover .miserable {
-  display: block;
-}
-.tidy5e.sheet.actor .miserable {
-  position: absolute;
-  right: -13px;
-  bottom: 26px;
-  width: 34px;
-  height: 34px;
-  z-index: 5;
-}
-.tidy5e.sheet.actor .miserable input {
-  display: none;
-}
-.tidy5e.sheet.actor .miserable label {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0 5px 0 5px;
-  font-size: 24px;
-  color: var(--icon-font);
-  cursor: pointer;
-  box-shadow: 0 0 10px var(--icon-shadow) inset;
-  border: 1px solid var(--icon-outline);
-  background: var(--icon-background);
-}
-.tidy5e.sheet.actor .roundPortrait .miserable label {
-  border-radius: 50%;
-}
-
-.tidy5e.sheet.actor .miserable label i {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 34px;
-}
-
-.tidy5e.sheet.actor .miserable label:hover {
-  color: rgba(255, 255, 255, 0.75);
-  text-shadow: 0 0 5px rgba(118, 228, 255, 0.5);
-}
-
-.tidy5e.sheet.actor .miserable input:checked + label {
-  color: white;
-  text-shadow: 0 0 10px #ffc276;
-  background: #999;
-}
-
-.tidy5e.sheet.actor .miserable input:checked + label i {
-  color: #FFFFFF;
-  animation: glow 5s ease-in-out infinite alternate;
-}
-
-.tidy5e.sheet.actor .miserable input:checked + label i.disable-animation {
-  animation: none;
-}
-
-.tidy5e.sheet.actor .inspirationOnHover .anguished {
-  display: none;
-}
-.tidy5e.sheet.actor .inspirationOnHover:hover .anguished {
-  display: block;
-}
-.tidy5e.sheet.actor .anguished {
-  position: absolute;
-  right: -26px;
-  bottom: 4px;
-  width: 25px;
-  height: 25px;
-  z-index: 5;
-}
-
-.tidy5e.sheet.actor .anguished input {
-  display: none;
-}
-.tidy5e.sheet.actor .anguished label {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0 5px 0 5px;
-  font-size: 17px;
-  color: var(--icon-font);
-  cursor: pointer;
-  box-shadow: 0 0 10px var(--icon-shadow) inset;
-  border: 1px solid var(--icon-outline);
-  background: var(--icon-background);
-}
-.tidy5e.sheet.actor .roundPortrait .anguished label {
-  border-radius: 50%;
-}
-
-.tidy5e.sheet.actor .anguished label i {
-  position: absolute;
-  top: 0px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 25px;
-}
-
-.tidy5e.sheet.actor .anguished label:hover {
-  color: rgba(255, 255, 255, 0.75);
-  text-shadow: 0 0 5px rgba(118, 228, 255, 0.5);
-}
-
-.tidy5e.sheet.actor .anguished input:checked + label {
-  color: white;
-  text-shadow: 0 0 10px #ffc276;
-  background: #999;
-}
-
-.tidy5e.sheet.actor .anguished input:checked + label i {
-  color: #FFFFFF;
-  animation: glow 5s ease-in-out infinite alternate;
-}
-
-.tidy5e.sheet.actor .anguished input:checked + label i.disable-animation {
-  animation: none;
-}
-.tidy5e.sheet.actor .attuned-items-counter {
-  display: none !important;
 }
