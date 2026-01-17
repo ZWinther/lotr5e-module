@@ -1,8 +1,17 @@
-<div class="flexrow summary2">
-  <input
-    type="text"
-    name="flags.lotr5e.details.patron"
-    value="{{flags.lotr5e.details.patron}}"
-    placeholder="{{localize 'LOTR.Patron'}}"
-  />
+<ul class="patron">
+  <h4 class="document-name fellowship-points-header">{{localize "LOTR.Patron"}}</h4>
+  <div class="card fellowship-card">
+    {{#if @root.editable}}
+      <div class="value">
+        <input type="text" name="flags.lotr5e.details.patron.value" value="{{ actor.flags.lotr5e.details.patron.value }}" placeholder="{{localize 'LOTR.Patron'}}"/>
+      </div>
+    {{else}}
+        {{#if actor.flags.lotr5e.details.patron.value}}
+          <span class="fellowship-points-value">{{actor.flags.lotr5e.details.patron.value}}</span>
+        {{else}}
+          <span class="fellowship-points-value">&nbsp;</span>
+        {{/if}}
+      {{/if}}
+  </div>
+</ul>
 </div>
