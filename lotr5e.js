@@ -1,4 +1,5 @@
 // Handlebars helpers
+
 // less than
 Handlebars.registerHelper('lst', function( a, b ){
 	var next =  arguments[arguments.length-1];
@@ -23,7 +24,6 @@ Handlebars.registerHelper('if_eq', function(a, b, opts) {
 });
 
 Hooks.on('init', function () {
-
 	// CONFIG CHANGES
 	Object.assign(CONFIG.DND5E.limitedUsePeriods, {
 		jrny: { label: "LOTR.Journey", abbreviation: "LOTR.JourneyAbbr" },
@@ -58,25 +58,23 @@ Hooks.on('init', function () {
 		cun: "LOTR.ArmorPropertiesCun",
 		rei: "LOTR.ArmorPropertiesRie"
 	};
-
 	CONFIG.DND5E.currencies = {
-		gp: {
-			label: "LOTR.CoinsGP",
-			abbreviation: "LOTR.CoinsAbbrGP",
-			conversion: 1
-		},
-		sp: {
-			label: "LOTR.CoinsSP",
-			abbreviation: "LOTR.CoinsAbbrSP",
-			conversion: 10
-		},
-		cp: {
-			label: "LOTR.CoinsCC",
-			abbreviation: "LOTR.CoinsAbbrCC",
-			conversion: 100
-		}
+	gp: {
+		label: "LOTR.CoinsGP",
+		abbreviation: "LOTR.CoinsAbbrGP",
+		conversion: 1
+	},
+	sp: {
+		label: "LOTR.CoinsSP",
+		abbreviation: "LOTR.CoinsAbbrSP",
+		conversion: 10
+	},
+	cp: {
+		label: "LOTR.CoinsCC",
+		abbreviation: "LOTR.CoinsAbbrCC",
+		conversion: 100
+	}
 	};
-
 	Object.assign(CONFIG.DND5E.tools, {
 		Pipes: {
 			ability: "wis",
@@ -95,20 +93,19 @@ Hooks.on('init', function () {
 	delete CONFIG.DND5E.skills.sur;
 
 	Object.assign(CONFIG.DND5E.skills, {
-		ins: { label: "LOTR.SkillIns", ability: "wis" },
-		lor: { label: "LOTR.SkillLor", ability: "int" },
-		mdc: { label: "LOTR.SkillMed", ability: "int" },
-		rid: { label: "LOTR.SkillRid", ability: "int" },
-		hun: { label: "LOTR.SkillHun", ability: "wis" },
-		exp: { label: "LOTR.SkillExp", ability: "wis" },
-		tra: { label: "LOTR.SkillTra", ability: "wis" }
+		ins: { label: "LOTR.SkillIns", ability: "wis", fullKey: "insight" },
+		lor: { label: "LOTR.SkillLor", ability: "int", fullKey: "lore" },
+		mdc: { label: "LOTR.SkillMed", ability: "int", fullKey: "medicine" },
+		rid: { label: "LOTR.SkillRid", ability: "int", fullKey: "riddle" },
+		hun: { label: "LOTR.SkillHun", ability: "wis", fullKey: "hunting" },
+		exp: { label: "LOTR.SkillExp", ability: "wis", fullKey: "exploration" },
+		tra: { label: "LOTR.SkillTra", ability: "wis", fullKey: "tradition" }
 	});
 
 	Object.assign(CONFIG.DND5E.abilities, {
-		sha: { label: "LOTR.AbilitySha", abbreviation: "LOTR.AbilityShaAbbr", fullKey: "", type: "mental", defaults: { vehicle: 0 }, improvement: false },
-		perm: {	label: "LOTR.AbilityPerm", abbreviation: "LOTR.AbilityPermAbbr", fullKey: "", type: "mental", defaults: { vehicle: 0 }, improvement: false }
+		sha: { label: "LOTR.AbilitySha", abbreviation: "LOTR.AbilityShaAbbr", fullKey: "shadow", type: "mental", defaults: { character: 0 }, improvement: false },
+		perm: {	label: "LOTR.AbilityPerm", abbreviation: "LOTR.AbilityPermAbbr", fullKey: "scars", type: "mental", defaults: { character: 0 }, improvement: false }
 	});
-	
 	CONFIG.DND5E.languages = {
 		standard: {
 			label: "LOTR.Language.Category.Good",
@@ -201,15 +198,15 @@ Hooks.on('renderCharacterActorSheet', async function (app, html, data) {
 		});
 });
 Hooks.on('renderGroupActorSheet', async function (app, html, data) { 
-		const actor = data.actor;
-		var groupMove = $(html).find("li.attribute.movement");
+		
+		var groupMove = $(html).find(".right .bottom");
 		const fellowshipBox = "/modules/lotr5e/templates/lotr-fellowship-box.hbs";
-		const fellowshipHtml = await renderTemplate(fellowshipBox, actor);
+		const fellowshipHtml = await foundry.applications.handlebars.renderTemplate(fellowshipBox, data);
 		$(fellowshipHtml).insertAfter(groupMove);
 	
-		var summary = $(html).find(".summary")[0];
+		var summary = $(html).find('.fellowship');
 		const patronBox = "/modules/lotr5e/templates/lotr-patron-box.hbs";
-		const patronHtml = await renderTemplate(patronBox, actor);
+		const patronHtml = await foundry.applications.handlebars.renderTemplate(patronBox, data);
 		$(patronHtml).insertAfter(summary);
 	});
 
@@ -219,7 +216,7 @@ Hooks.on('renderGroupActorSheet', async function (app, html, data) {
 		npcSha.remove();
 		npcPerm.remove();
 	});
-	Hooks.on('renderActorSheet5eNPC2', async function (app, html, data) {
+	Hooks.on('renderNPCActorSheet', async function (app, html, data) {
 		const npcSha = $(html).find('[data-ability="sha"]');
 		const npcPerm = $(html).find('[data-ability="perm"]');
 		npcSha.remove();
