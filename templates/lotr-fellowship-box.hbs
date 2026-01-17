@@ -1,12 +1,17 @@
-<li class="attribute fellowship">
-  <h4 class="attribute-name box-title">{{localize "LOTR.FellowshipPoints"}}</h4>
-  <div class="attribute-value">
-    <input
-      type="number"
-      name="flags.lotr5e.attributes.fellowship"
-      data-dtype="Number"
-      value="{{flags.lotr5e.attributes.fellowship}}"
-      placeholder="0"
-    />
+<div class="lotr5e-group">
+<ul class="fellowship">
+  <h4 class="document-name fellowship-points-header">{{localize "LOTR.FellowshipPoints"}}</h4>
+  <div class="card fellowship-card">
+    {{#if @root.editable}}
+      <div class="value">
+        <input type="number" name="flags.lotr5e.attributes.fellowship" data-dtype="Number" value="{{actor.flags.lotr5e.attributes.fellowship}}" placeholder="0"/>
+      </div>
+      {{else}}
+        {{#if actor.flags.lotr5e.attributes.fellowship}}
+          <span class="fellowship-points-value">{{actor.flags.lotr5e.attributes.fellowship}}</span>
+        {{else}}
+          <span class="fellowship-points-value">0</span>
+        {{/if}}
+      {{/if}}
   </div>
-</li>
+</ul>
